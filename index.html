@@ -173,8 +173,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#1、volatile关键字</p>
-<p>##1.1 volatile关键字具备可见性和有序性。<br>可见性：一个线程对共享变量值的修改，能够及时地被其他线程看到。由此又引出了一个概念。共享变量：如果一个变量在多个线程的工作内存中都存在副本，那么这个变量就是这几个线程的共享变量。下文会有详细例子讲解。<br><img src="/2017/12/31/细说Java两大关键字volatile和synchronized/Java内存模型.png" alt="Java内存模型"><br>如上图所示，表示Java内存模型。我们看到，(1)线程对共享变量的所有操作都必须在自己的工作内存中进行，不能直接从主内存中读写。(2)不同线程之间无法直接访问其他线程工作内存中的变量，线程间变量值的传递需要通过主内存来完成。<br>共享变量可见性实现的原理：线程1对共享变量的修改要想被线程2及时看到，必须要经过下面两个步骤。(1)把工作内存1中更新过的共享变量刷新到主内存中。(2)将主内存中最新的共享变量的值更新到工作内存2中。<br><img src="/2017/12/31/细说Java两大关键字volatile和synchronized/共享变量可见性实现原理.png" alt="共享变量可见性实现原理"><br></p>
+        <h1 id="1、volatile关键字"><a href="#1、volatile关键字" class="headerlink" title="1、volatile关键字"></a>1、volatile关键字</h1><h2 id="1-1-volatile关键字具备可见性和有序性。"><a href="#1-1-volatile关键字具备可见性和有序性。" class="headerlink" title="1.1 volatile关键字具备可见性和有序性。"></a>1.1 volatile关键字具备可见性和有序性。</h2><p>可见性：一个线程对共享变量值的修改，能够及时地被其他线程看到。由此又引出了一个概念。共享变量：如果一个变量在多个线程的工作内存中都存在副本，那么这个变量就是这几个线程的共享变量。下文会有详细例子讲解。<br><img src="/2017/12/31/细说Java两大关键字volatile和synchronized/Java内存模型.png" alt="Java内存模型"></p>
         
           <a class="article-more-a" href="/2017/12/31/细说Java两大关键字volatile和synchronized/#more">more >></a>
         
@@ -434,11 +433,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Java关键字</a>
+                <a href="javascript:void(0)" class="js-tag color1">offer Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">offer Java</a>
+                <a href="javascript:void(0)" class="js-tag color3">Java关键字</a>
               </li>
             
             <div class="clearfix"></div>

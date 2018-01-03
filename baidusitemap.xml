@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/01/03/LeetCode-60-Permutation-Sequence/</loc>
+    <lastmod>2018-01-03T13:47:12.893Z</lastmod>
+    <data>
+        <display>
+        <title>LeetCode 60. Permutation Sequence</title>
+        <pubTime>2018-01-03T13:41:42.000Z</pubTime>
+        
+        <tag>LeetCode</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/01/03/LeetCode-59-Spiral-Matrix-II/</loc>
-    <lastmod>2018-01-03T13:38:23.430Z</lastmod>
+    <lastmod>2018-01-03T13:42:26.450Z</lastmod>
     <data>
         <display>
         <title>LeetCode 59. Spiral Matrix II</title>

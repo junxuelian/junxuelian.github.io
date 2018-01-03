@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="一名行进中的码农">
 <meta property="og:description" content="59. Spiral Matrix IIGiven an integer n, generate a square matrix filled with elements from 1 to n2 in spiral order. For example,Given n = 3, You should return the following matrix:[ [ 1, 2, 3 ], [ 8,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-03T13:38:23.430Z">
+<meta property="og:updated_time" content="2018-01-03T13:42:26.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 59. Spiral Matrix II">
 <meta name="twitter:description" content="59. Spiral Matrix IIGiven an integer n, generate a square matrix filled with elements from 1 to n2 in spiral order. For example,Given n = 3, You should return the following matrix:[ [ 1, 2, 3 ], [ 8,">
@@ -178,7 +178,7 @@
       
         <h1 id="59-Spiral-Matrix-II"><a href="#59-Spiral-Matrix-II" class="headerlink" title="59. Spiral Matrix II"></a>59. Spiral Matrix II</h1><p>Given an integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.</p>
 <p>For example,<br>Given n = 3,</p>
-<p>You should return the following matrix:<br>[<br> [ 1, 2, 3 ],<br> [ 8, 9, 4 ],<br> [ 7, 6, 5 ]<br>]</p>
+<p>You should return the following matrix:<br>[<br> [ 1, 2, 3 ],<br> [ 8, 9, 4 ],<br> [ 7, 6, 5 ]<br>]<br><a id="more"></a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[][] generateMatrix(int n) &#123;</span><br><span class="line">        int[][] a = new int[n][n];</span><br><span class="line">        int right = n - 1;</span><br><span class="line">        int left = 0;</span><br><span class="line">        int top = 0;</span><br><span class="line">        int bottom = n - 1;</span><br><span class="line">        int count = 1;</span><br><span class="line">        while (count &lt;= n * n) &#123;</span><br><span class="line">            for (int i = left; i &lt;= right; i++) &#123;</span><br><span class="line">                a[top][i] = count++;</span><br><span class="line">            &#125;</span><br><span class="line">            top++;</span><br><span class="line">            for (int j = top; j &lt;= bottom; j++) &#123;</span><br><span class="line">                a[j][right] = count++;</span><br><span class="line">            &#125;</span><br><span class="line">            right--;</span><br><span class="line">            for (int i = right; i &gt;= left; i--) &#123;</span><br><span class="line">                a[bottom][i] = count++;</span><br><span class="line">            &#125;</span><br><span class="line">            bottom--;</span><br><span class="line">            for (int j = bottom; j &gt;= top; j--) &#123;</span><br><span class="line">                a[j][left] = count++;</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">        &#125;</span><br><span class="line">        return a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
@@ -296,6 +296,15 @@
 </article>
 
   <nav id="article-nav">
+  
+    <a href="/2018/01/03/LeetCode-60-Permutation-Sequence/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          LeetCode 60. Permutation Sequence
+        
+      </div>
+    </a>
   
   
     <a href="/2017/12/31/细说Java两大关键字volatile和synchronized/" id="article-nav-older" class="article-nav-link-wrap">
@@ -457,15 +466,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">offer Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Java关键字</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">offer Java</a>
               </li>
             
             <div class="clearfix"></div>

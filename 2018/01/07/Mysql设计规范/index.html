@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Mysql设计规范 | 一名行进中的码农</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-  <meta name="description" content="Mysql数据库设计规范1、数据库命名规范2、数据库基本设计规范3、数据库索引设计规范4、数据库字段设计规范5、数据库SQL开发规范6、数据库操作行为规范（针对运维） 1.数据库命名规范1.所有数据库对象名称必须使用小写字母并用下划线分割因为在Linux系统下，Mysql数据库对象名称默认情况下大小写敏感。大小混用，会为以后开发带来不必要的麻烦。我们统一规范，为后面开发带来便利。例如，不同的数据库">
+  <meta name="description" content="Mysql数据库设计规范1、数据库命名规范2、数据库基本设计规范3、数据库索引设计规范4、数据库字段设计规范5、数据库SQL开发规范6、数据库操作行为规范（针对运维）">
 <meta name="keywords" content="MySQL设计规范">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql设计规范">
 <meta property="og:url" content="http://yoursite.com/2018/01/07/Mysql设计规范/index.html">
 <meta property="og:site_name" content="一名行进中的码农">
-<meta property="og:description" content="Mysql数据库设计规范1、数据库命名规范2、数据库基本设计规范3、数据库索引设计规范4、数据库字段设计规范5、数据库SQL开发规范6、数据库操作行为规范（针对运维） 1.数据库命名规范1.所有数据库对象名称必须使用小写字母并用下划线分割因为在Linux系统下，Mysql数据库对象名称默认情况下大小写敏感。大小混用，会为以后开发带来不必要的麻烦。我们统一规范，为后面开发带来便利。例如，不同的数据库">
+<meta property="og:description" content="Mysql数据库设计规范1、数据库命名规范2、数据库基本设计规范3、数据库索引设计规范4、数据库字段设计规范5、数据库SQL开发规范6、数据库操作行为规范（针对运维）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-08T04:13:01.192Z">
+<meta property="og:updated_time" content="2018-01-08T04:17:19.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql设计规范">
-<meta name="twitter:description" content="Mysql数据库设计规范1、数据库命名规范2、数据库基本设计规范3、数据库索引设计规范4、数据库字段设计规范5、数据库SQL开发规范6、数据库操作行为规范（针对运维） 1.数据库命名规范1.所有数据库对象名称必须使用小写字母并用下划线分割因为在Linux系统下，Mysql数据库对象名称默认情况下大小写敏感。大小混用，会为以后开发带来不必要的麻烦。我们统一规范，为后面开发带来便利。例如，不同的数据库">
+<meta name="twitter:description" content="Mysql数据库设计规范1、数据库命名规范2、数据库基本设计规范3、数据库索引设计规范4、数据库字段设计规范5、数据库SQL开发规范6、数据库操作行为规范（针对运维）">
   
     <link rel="alternative" href="/atom.xml" title="一名行进中的码农" type="application/atom+xml">
   
@@ -176,7 +176,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Mysql数据库设计规范"><a href="#Mysql数据库设计规范" class="headerlink" title="Mysql数据库设计规范"></a>Mysql数据库设计规范</h1><p>1、数据库命名规范<br>2、数据库基本设计规范<br>3、数据库索引设计规范<br>4、数据库字段设计规范<br>5、数据库SQL开发规范<br>6、数据库操作行为规范（针对运维）</p>
+        <h1 id="Mysql数据库设计规范"><a href="#Mysql数据库设计规范" class="headerlink" title="Mysql数据库设计规范"></a>Mysql数据库设计规范</h1><p>1、数据库命名规范<br>2、数据库基本设计规范<br>3、数据库索引设计规范<br>4、数据库字段设计规范<br>5、数据库SQL开发规范<br>6、数据库操作行为规范（针对运维）<br><a id="more"></a></p>
 <h2 id="1-数据库命名规范"><a href="#1-数据库命名规范" class="headerlink" title="1.数据库命名规范"></a>1.数据库命名规范</h2><h3 id="1-所有数据库对象名称必须使用小写字母并用下划线分割"><a href="#1-所有数据库对象名称必须使用小写字母并用下划线分割" class="headerlink" title="1.所有数据库对象名称必须使用小写字母并用下划线分割"></a>1.所有数据库对象名称必须使用小写字母并用下划线分割</h3><p>因为在Linux系统下，Mysql数据库对象名称默认情况下大小写敏感。大小混用，会为以后开发带来不必要的麻烦。我们统一规范，为后面开发带来便利。<br>例如，不同的数据库名： DbName dbname 不同表名： Table table tabLe</p>
 <h3 id="2-所有数据库对象名称禁止使用Mysql保留关键字"><a href="#2-所有数据库对象名称禁止使用Mysql保留关键字" class="headerlink" title="2.所有数据库对象名称禁止使用Mysql保留关键字"></a>2.所有数据库对象名称禁止使用Mysql保留关键字</h3><p>例如，用户表中会有一个字段from记录用户来源。select id,username,<code>from</code>,age from td_user;以下网址可查询Mysql关键字<a href="https://dev.mysql.com/doc/refman/5.7/en/keywords.html。" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/5.7/en/keywords.html。</a></p>
 <h3 id="3-数据库对象命名要能做到见名知义，并且最好不要超过32个字符。"><a href="#3-数据库对象命名要能做到见名知义，并且最好不要超过32个字符。" class="headerlink" title="3.数据库对象命名要能做到见名知义，并且最好不要超过32个字符。"></a>3.数据库对象命名要能做到见名知义，并且最好不要超过32个字符。</h3><p>需要注意的是32个字符不是Mysql的限制。例如 用户数据库ds_userdb,用户账号表 user_account。<br>针对临时库、表必须以tmp为前缀并以日期为后缀。备份库，备份表必须以bak为前缀并以日期为后缀。<br>所有存储相同数据的列名和列类型必须一致。避免关联查询时，如果两个表关联列数据类型不同的话，会进行隐式的数据类型转换，会造成列上的索引失效，会让查询效率降低。</p>
@@ -485,15 +485,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">MySQL设计规范</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">offer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
             
             <div class="clearfix"></div>

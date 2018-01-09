@@ -8,18 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>MySQL执行计划解读 | 一名行进中的码农</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-  <meta name="description" content="逼自己，把自己逼到极致。">
+  <meta name="description" content="MySQL执行计划能告诉我们什么？MySQL优化器是如何处理我们所提交的SQl请求的。SQL如何使用索引的。联接查询的执行顺序。查询扫描的数据行数。无法展示存储过程，触发器，UDF对查询的影响。 如何查看MySQL的执行计划加上EXPLAIN关键字就可以了。接下来解释每一列所代表的含义。 解读MySQL执行计划ID列：ID列中的数据为一组数字，表示执行select语句的顺序。ID值相同时，执行顺序">
 <meta name="keywords" content="MySQL执行计划解读">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL执行计划解读">
 <meta property="og:url" content="http://yoursite.com/2018/01/09/MySQL执行计划解读/index.html">
 <meta property="og:site_name" content="一名行进中的码农">
-<meta property="og:description" content="逼自己，把自己逼到极致。">
+<meta property="og:description" content="MySQL执行计划能告诉我们什么？MySQL优化器是如何处理我们所提交的SQl请求的。SQL如何使用索引的。联接查询的执行顺序。查询扫描的数据行数。无法展示存储过程，触发器，UDF对查询的影响。 如何查看MySQL的执行计划加上EXPLAIN关键字就可以了。接下来解释每一列所代表的含义。 解读MySQL执行计划ID列：ID列中的数据为一组数字，表示执行select语句的顺序。ID值相同时，执行顺序">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-09T13:19:41.359Z">
+<meta property="og:image" content="http://yoursite.com/2018/01/09/MySQL执行计划解读/执行计划结果.png">
+<meta property="og:updated_time" content="2018-01-09T13:21:38.447Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL执行计划解读">
-<meta name="twitter:description" content="逼自己，把自己逼到极致。">
+<meta name="twitter:description" content="MySQL执行计划能告诉我们什么？MySQL优化器是如何处理我们所提交的SQl请求的。SQL如何使用索引的。联接查询的执行顺序。查询扫描的数据行数。无法展示存储过程，触发器，UDF对查询的影响。 如何查看MySQL的执行计划加上EXPLAIN关键字就可以了。接下来解释每一列所代表的含义。 解读MySQL执行计划ID列：ID列中的数据为一组数字，表示执行select语句的顺序。ID值相同时，执行顺序">
+<meta name="twitter:image" content="http://yoursite.com/2018/01/09/MySQL执行计划解读/执行计划结果.png">
   
     <link rel="alternative" href="/atom.xml" title="一名行进中的码农" type="application/atom+xml">
   
@@ -179,7 +181,7 @@
     <div id="toc-article" class="toc-article">
         <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn()">×</span>
         <strong class="toc-title">文章目录</strong>
-           
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL执行计划能告诉我们什么？"><span class="toc-number">1.</span> <span class="toc-text">MySQL执行计划能告诉我们什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何查看MySQL的执行计划"><span class="toc-number">2.</span> <span class="toc-text">如何查看MySQL的执行计划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解读MySQL执行计划"><span class="toc-number">3.</span> <span class="toc-text">解读MySQL执行计划</span></a></li></ol>
          </div>
    <script type="text/javascript">
     function showToc(){
@@ -200,7 +202,11 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="MySQL执行计划能告诉我们什么？"><a href="#MySQL执行计划能告诉我们什么？" class="headerlink" title="MySQL执行计划能告诉我们什么？"></a>MySQL执行计划能告诉我们什么？</h2><p>MySQL优化器是如何处理我们所提交的SQl请求的。SQL如何使用索引的。联接查询的执行顺序。查询扫描的数据行数。无法展示存储过程，触发器，UDF对查询的影响。</p>
+<h2 id="如何查看MySQL的执行计划"><a href="#如何查看MySQL的执行计划" class="headerlink" title="如何查看MySQL的执行计划"></a>如何查看MySQL的执行计划</h2><p>加上EXPLAIN关键字就可以了。接下来解释每一列所代表的含义。<br><img src="/2018/01/09/MySQL执行计划解读/执行计划结果.png" alt="执行计划结果"></p>
+<h2 id="解读MySQL执行计划"><a href="#解读MySQL执行计划" class="headerlink" title="解读MySQL执行计划"></a>解读MySQL执行计划</h2><p>ID列：ID列中的数据为一组数字，表示执行select语句的顺序。ID值相同时，执行顺序由上至下。ID值越大优先级越高，越先被执行。<br>select_type列：</p>
+<p>possible_keys列：显示出MySQL能使用哪些索引来优化查询。查询列所涉及到的列上的索引都会被列出，但不一定会被使用。<br>key列：查询优化器优化查询实际所使用的索引。如果没有可用的索引，则显示为NULL。如查询使用了覆盖索引，则该索引仅出现在key列中。<br>key_len列：表示索引字段的最大可能长度。<br>ref列：表示那些列或常量被用于查找索引列上的值。<br>rows列：表示MySQl通过索引统计信息，估算的所需读取的行数，并不准确。<br>filtered列：表示返回结果的行数占需读取行数的百分比，值越大越好，并不准确。<br>做个小笔记：</p>
+<p>优化如下语句：</p>
       
 
       
@@ -346,7 +352,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL执行计划能告诉我们什么？"><span class="toc-number">1.</span> <span class="toc-text">MySQL执行计划能告诉我们什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何查看MySQL的执行计划"><span class="toc-number">2.</span> <span class="toc-text">如何查看MySQL的执行计划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解读MySQL执行计划"><span class="toc-number">3.</span> <span class="toc-text">解读MySQL执行计划</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -494,11 +500,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MySQL执行计划解读</a>
+                <a href="javascript:void(0)" class="js-tag color5">Mysql设计规范</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Mysql设计规范</a>
+                <a href="javascript:void(0)" class="js-tag color2">MySQL执行计划解读</a>
               </li>
              
               <li class="article-tag-list-item">

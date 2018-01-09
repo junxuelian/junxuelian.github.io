@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-09T13:21:38.447Z</updated>
+  <updated>2018-01-09T13:23:30.784Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2018/01/09/MySQL%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92%E8%A7%A3%E8%AF%BB/"/>
     <id>http://yoursite.com/2018/01/09/MySQL执行计划解读/</id>
     <published>2018-01-09T08:12:54.000Z</published>
-    <updated>2018-01-09T13:21:38.447Z</updated>
+    <updated>2018-01-09T13:23:30.784Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="MySQL执行计划能告诉我们什么？"><a href="#MySQL执行计划能告诉我们什么？" class="headerlink" title="MySQL执行计划能告诉我们什么？"></a>MySQL执行计划能告诉我们什么？</h2><p>MySQL优化器是如何处理我们所提交的SQl请求的。SQL如何使用索引的。联接查询的执行顺序。查询扫描的数据行数。无法展示存储过程，触发器，UDF对查询的影响。</p><h2 id="如何查看MySQL的执行计划"><a href="#如何查看MySQL的执行计划" class="headerlink" title="如何查看MySQL的执行计划"></a>如何查看MySQL的执行计划</h2><p>加上EXPLAIN关键字就可以了。接下来解释每一列所代表的含义。<br><img src="/2018/01/09/MySQL执行计划解读/执行计划结果.png" alt="执行计划结果"></p><h2 id="解读MySQL执行计划"><a href="#解读MySQL执行计划" class="headerlink" title="解读MySQL执行计划"></a>解读MySQL执行计划</h2><p>ID列：ID列中的数据为一组数字，表示执行select语句的顺序。ID值相同时，执行顺序由上至下。ID值越大优先级越高，越先被执行。<br>select_type列：</p><p>possible_keys列：显示出MySQL能使用哪些索引来优化查询。查询列所涉及到的列上的索引都会被列出，但不一定会被使用。<br>key列：查询优化器优化查询实际所使用的索引。如果没有可用的索引，则显示为NULL。如查询使用了覆盖索引，则该索引仅出现在key列中。<br>key_len列：表示索引字段的最大可能长度。<br>ref列：表示那些列或常量被用于查找索引列上的值。<br>rows列：表示MySQl通过索引统计信息，估算的所需读取的行数，并不准确。<br>filtered列：表示返回结果的行数占需读取行数的百分比，值越大越好，并不准确。<br>做个小笔记：</p><p>优化如下语句：</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="MySQL执行计划能告诉我们什么？"><a href="#MySQL执行计划能告诉我们什么？" class="headerlink" title="MySQL执行计划能告诉我们什么？"></a>MySQL执行计划能告诉我们什么？</h2><p>MySQL优化器是如何处理我们所提交的SQl请求的。SQL如何使用索引的。联接查询的执行顺序。查询扫描的数据行数。无法展示存储过程，触发器，UDF对查询的影响。</p><h2 id="如何查看MySQL的执行计划"><a href="#如何查看MySQL的执行计划" class="headerlink" title="如何查看MySQL的执行计划"></a>如何查看MySQL的执行计划</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN</span><br><span class="line">SELECT c.`category_name`,a.`product_name`,b.`title`</span><br><span class="line">FROM product_info a</span><br><span class="line">JOIN product_comment b ON a.`product_id`=b.`product_id`</span><br><span class="line">JOIN product_category c ON c.`category_id`=a.`one_category_id`;</span><br></pre></td></tr></table></figure><p>加上EXPLAIN关键字就可以了。接下来解释每一列所代表的含义。<br><img src="/2018/01/09/MySQL执行计划解读/执行计划结果.png" alt="执行计划结果"></p><h2 id="解读MySQL执行计划"><a href="#解读MySQL执行计划" class="headerlink" title="解读MySQL执行计划"></a>解读MySQL执行计划</h2><p>ID列：ID列中的数据为一组数字，表示执行select语句的顺序。ID值相同时，执行顺序由上至下。ID值越大优先级越高，越先被执行。<br>select_type列：</p><p>possible_keys列：显示出MySQL能使用哪些索引来优化查询。查询列所涉及到的列上的索引都会被列出，但不一定会被使用。<br>key列：查询优化器优化查询实际所使用的索引。如果没有可用的索引，则显示为NULL。如查询使用了覆盖索引，则该索引仅出现在key列中。<br>key_len列：表示索引字段的最大可能长度。<br>ref列：表示那些列或常量被用于查找索引列上的值。<br>rows列：表示MySQl通过索引统计信息，估算的所需读取的行数，并不准确。<br>filtered列：表示返回结果的行数占需读取行数的百分比，值越大越好，并不准确。<br>做个小笔记：</p><p>优化如下语句：</p>]]></content>
     
     <summary type="html">
     

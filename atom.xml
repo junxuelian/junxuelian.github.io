@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-10T02:39:21.301Z</updated>
+  <updated>2018-01-10T02:42:15.583Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,17 +21,14 @@
     <link href="http://yoursite.com/2018/01/10/19%E5%B1%8A%E5%AE%9E%E4%B9%A0%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/"/>
     <id>http://yoursite.com/2018/01/10/19届实习前端面经/</id>
     <published>2018-01-10T02:33:34.000Z</published>
-    <updated>2018-01-10T02:39:21.301Z</updated>
+    <updated>2018-01-10T02:42:15.583Z</updated>
     
-    <content type="html"><![CDATA[<p>本人是Java后台，所以不能很好地整理学弟李彦涛前端的实习面经，你们凑合着看吧!学弟很巅峰除了上述提到了，头条，腾讯实习offer均拿到了。</p><h2 id="网易考拉"><a href="#网易考拉" class="headerlink" title="网易考拉"></a>网易考拉</h2><p>跨域<br>promise<br>es6<br>flex<br>generator</p><p>项目有关<br>Echarts最难的一个点<br>雪碧图怎么做</p><h2 id="360"><a href="#360" class="headerlink" title="360"></a>360</h2><p>前后端合作<br>文档书写<br>webpack<br>Vue原理<br>diff原理<br>ES6<br>微信换Token流程<br>微信为什么限制接口申请频率<br>XSS<br>CSRF<br>CSS模块化<br>动画优化</p><p>二面<br>你对Vue有什么看法<br>网络错误如何debug</p><h2 id="小米"><a href="#小米" class="headerlink" title="小米"></a>小米</h2><p>一面</p><p>HTML5新增特性<br>CSS3垂直居中<br>ES6特性<br>Event Loop<br>axios 发送 formData：<br>HTML5 储存<br>web Worker<br>webSocket<br>Promise<br>MongoDB<br>canvas<br>this指向<br>箭头函数<br>new 发生了什么<br>在构造函数中显示 return<br>前端优化<br>Vue 组件通信 / props 单向数据流<br>Nuxt原理<br>Git如何解决冲突</p><p>二面<br>Promise及其循环调用、顺序调用、无限调用<br>Promise如何取消<br>Promise 有没有不论成功失败都会执行的<br>ES6新数据结构<br>Map和Object区别<br>迭代器<br>迭代协议<br>可迭代对象<br>vue实现树组件<br>读过vue源码吗<br>vue-router 原理<br>express<br>Mongo<br>Mongo如何搭建集群<br>Node如何搭建集群</p><h2 id="滴滴-大数据平台"><a href="#滴滴-大数据平台" class="headerlink" title="滴滴-大数据平台"></a>滴滴-大数据平台</h2><p>在大型项目中有遇见什么问题吗<br>对组件化有什么看法<br>推荐用vue还是react，为什么<br>组件化粒度</p><h2 id="思宇信息"><a href="#思宇信息" class="headerlink" title="思宇信息"></a>思宇信息</h2><p>一面<br>px、em、rem<br>优化<br>jsonp<br>this<br>call、apply<br>json 可以用来干啥<br>HTML5<br>position<br>css选择器</p><h2 id="百度-大搜"><a href="#百度-大搜" class="headerlink" title="百度-大搜"></a>百度-大搜</h2><p>垂直居中<br>rem<br>gird<br>盒模型<br>闭包<br>事件模型<br>跨域<br>diff<br>截图库内部原理，html2canvas具体过程<br>SSR性能问题有哪些，怎么解决<br>图的基本算法<br>数据库性能<br>高QPS系统如何个设计<br>内存数据库和持久化数据库架构设计<br>整个HTTP请求过程。HTTP内容有哪些<br>vdom的diff<br>Vue模板编译，和其他模板系统有什么区别</p><h2 id="百度"><a href="#百度" class="headerlink" title="百度"></a>百度</h2><p>一面<br>盒模型<br>BFC<br>数组的所有方法<br>this<br>事件机制<br>setTimeout<br>HTTP code<br>缓存<br>AMD、CMD<br>Vue的理解<br>diff<br>私有变量如何实现<br>原型链、继承</p><h2 id="百度-1"><a href="#百度-1" class="headerlink" title="百度"></a>百度</h2><p> 一面<br>网络：五层模型、三次握手、四次挥手、HTTP、HTTPS<br>数据结构：完全二叉树<br>操作系统：线程、进程<br>CSS 会不会阻塞（不阻塞解析阻塞渲染）<br>闪烁问题<br>页面渲染机制<br>项目</p>]]></content>
+    <content type="html"><![CDATA[<p>本人是Java后台，所以不能很好地整理学弟李彦涛前端的实习面经，你们凑合着看吧!学弟很巅峰除了上述提到了，头条，腾讯实习offer均拿到了。</p><h2 id="网易考拉"><a href="#网易考拉" class="headerlink" title="网易考拉"></a>网易考拉</h2><p>跨域<br>promise<br>es6<br>flex<br>generator<br><a id="more"></a></p><p>项目有关<br>Echarts最难的一个点<br>雪碧图怎么做</p><h2 id="360"><a href="#360" class="headerlink" title="360"></a>360</h2><p>前后端合作<br>文档书写<br>webpack<br>Vue原理<br>diff原理<br>ES6<br>微信换Token流程<br>微信为什么限制接口申请频率<br>XSS<br>CSRF<br>CSS模块化<br>动画优化</p><p>二面<br>你对Vue有什么看法<br>网络错误如何debug</p><h2 id="小米"><a href="#小米" class="headerlink" title="小米"></a>小米</h2><p>一面</p><p>HTML5新增特性<br>CSS3垂直居中<br>ES6特性<br>Event Loop<br>axios 发送 formData：<br>HTML5 储存<br>web Worker<br>webSocket<br>Promise<br>MongoDB<br>canvas<br>this指向<br>箭头函数<br>new 发生了什么<br>在构造函数中显示 return<br>前端优化<br>Vue 组件通信 / props 单向数据流<br>Nuxt原理<br>Git如何解决冲突</p><p>二面<br>Promise及其循环调用、顺序调用、无限调用<br>Promise如何取消<br>Promise 有没有不论成功失败都会执行的<br>ES6新数据结构<br>Map和Object区别<br>迭代器<br>迭代协议<br>可迭代对象<br>vue实现树组件<br>读过vue源码吗<br>vue-router 原理<br>express<br>Mongo<br>Mongo如何搭建集群<br>Node如何搭建集群</p><h2 id="滴滴-大数据平台"><a href="#滴滴-大数据平台" class="headerlink" title="滴滴-大数据平台"></a>滴滴-大数据平台</h2><p>在大型项目中有遇见什么问题吗<br>对组件化有什么看法<br>推荐用vue还是react，为什么<br>组件化粒度</p><h2 id="思宇信息"><a href="#思宇信息" class="headerlink" title="思宇信息"></a>思宇信息</h2><p>一面<br>px、em、rem<br>优化<br>jsonp<br>this<br>call、apply<br>json 可以用来干啥<br>HTML5<br>position<br>css选择器</p><h2 id="百度-大搜"><a href="#百度-大搜" class="headerlink" title="百度-大搜"></a>百度-大搜</h2><p>垂直居中<br>rem<br>gird<br>盒模型<br>闭包<br>事件模型<br>跨域<br>diff<br>截图库内部原理，html2canvas具体过程<br>SSR性能问题有哪些，怎么解决<br>图的基本算法<br>数据库性能<br>高QPS系统如何个设计<br>内存数据库和持久化数据库架构设计<br>整个HTTP请求过程。HTTP内容有哪些<br>vdom的diff<br>Vue模板编译，和其他模板系统有什么区别</p><h2 id="百度"><a href="#百度" class="headerlink" title="百度"></a>百度</h2><p>一面<br>盒模型<br>BFC<br>数组的所有方法<br>this<br>事件机制<br>setTimeout<br>HTTP code<br>缓存<br>AMD、CMD<br>Vue的理解<br>diff<br>私有变量如何实现<br>原型链、继承</p><h2 id="百度-1"><a href="#百度-1" class="headerlink" title="百度"></a>百度</h2><p> 一面<br>网络：五层模型、三次握手、四次挥手、HTTP、HTTPS<br>数据结构：完全二叉树<br>操作系统：线程、进程<br>CSS 会不会阻塞（不阻塞解析阻塞渲染）<br>闪烁问题<br>页面渲染机制<br>项目</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;本人是Java后台，所以不能很好地整理学弟李彦涛前端的实习面经，你们凑合着看吧!学弟很巅峰除了上述提到了，头条，腾讯实习offer均拿到了。&lt;/p&gt;
-&lt;h2 id=&quot;网易考拉&quot;&gt;&lt;a href=&quot;#网易考拉&quot; class=&quot;headerlink&quot; title=&quot;网易考拉&quot;&gt;
-      
+      &lt;p&gt;本人是Java后台，所以不能很好地整理学弟李彦涛前端的实习面经，你们凑合着看吧!学弟很巅峰除了上述提到了，头条，腾讯实习offer均拿到了。&lt;/p&gt;
+&lt;h2 id=&quot;网易考拉&quot;&gt;&lt;a href=&quot;#网易考拉&quot; class=&quot;headerlink&quot; title=&quot;网易考拉&quot;&gt;&lt;/a&gt;网易考拉&lt;/h2&gt;&lt;p&gt;跨域&lt;br&gt;promise&lt;br&gt;es6&lt;br&gt;flex&lt;br&gt;generator&lt;br&gt;&lt;/p&gt;
     
     </summary>
     

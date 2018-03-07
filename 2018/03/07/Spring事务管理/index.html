@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>一名行进中的码农</title>
+  <title>Spring事务管理 | 一名行进中的码农</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-  <meta name="description" content="逼自己，把自己逼到极致。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一名行进中的码农">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta name="description" content="什么是事务？事务指的是逻辑上的一组操作，这组操作要么全部成功，要么全部失败。 事务的特性（ACID）1、原子性2、一致性3、隔离性4、持久性 原子性：原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。 一致性一致性指事务前后数据的完整性必须保持一致。 隔离性隔离性指多个用户并发访问数据库时，一个用户的事务不能被其他用户的事务所干扰，多个并发事务之间数据要相互隔离。 持久">
+<meta name="keywords" content="Spring事务管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring事务管理">
+<meta property="og:url" content="http://yoursite.com/2018/03/07/Spring事务管理/index.html">
 <meta property="og:site_name" content="一名行进中的码农">
-<meta property="og:description" content="逼自己，把自己逼到极致。">
+<meta property="og:description" content="什么是事务？事务指的是逻辑上的一组操作，这组操作要么全部成功，要么全部失败。 事务的特性（ACID）1、原子性2、一致性3、隔离性4、持久性 原子性：原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。 一致性一致性指事务前后数据的完整性必须保持一致。 隔离性隔离性指多个用户并发访问数据库时，一个用户的事务不能被其他用户的事务所干扰，多个并发事务之间数据要相互隔离。 持久">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/03/07/Spring事务管理/为不同的持久化框架提供不同的事务管理器.png">
+<meta property="og:updated_time" content="2018-03-07T07:52:28.142Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一名行进中的码农">
-<meta name="twitter:description" content="逼自己，把自己逼到极致。">
+<meta name="twitter:title" content="Spring事务管理">
+<meta name="twitter:description" content="什么是事务？事务指的是逻辑上的一组操作，这组操作要么全部成功，要么全部失败。 事务的特性（ACID）1、原子性2、一致性3、隔离性4、持久性 原子性：原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。 一致性一致性指事务前后数据的完整性必须保持一致。 隔离性隔离性指多个用户并发访问数据库时，一个用户的事务不能被其他用户的事务所干扰，多个并发事务之间数据要相互隔离。 持久">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/07/Spring事务管理/为不同的持久化框架提供不同的事务管理器.png">
   
     <link rel="alternative" href="/atom.xml" title="一名行进中的码农" type="application/atom+xml">
   
@@ -151,16 +155,16 @@
             <canvas data-colors="#eaeaea" data-sectionheight="100" data-contentid="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LeetCode-60-Permutation-Sequence" class="article article-type-post article-index" itemscope itemprop="blogPost">
+            <article id="post-Spring事务管理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
-        <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/03/LeetCode-60-Permutation-Sequence/">LeetCode 60. Permutation Sequence</a>
+        <h1 class="article-title" itemprop="name">
+      Spring事务管理
     </h1>
         
-        <a href="/2018/01/03/LeetCode-60-Permutation-Sequence/" class="archive-article-date">
-  	<time datetime="2018-01-03T13:41:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-03</time>
+        <a href="/2018/03/07/Spring事务管理/" class="archive-article-date">
+  	<time datetime="2018-03-07T02:47:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
 </a>
         
 	 
@@ -169,19 +173,77 @@
     
 
     <!-- 目录内容 -->
-       
+
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc()" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn()">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是事务？"><span class="toc-number">1.</span> <span class="toc-text">什么是事务？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务的特性（ACID）"><span class="toc-number">2.</span> <span class="toc-text">事务的特性（ACID）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原子性："><span class="toc-number">3.</span> <span class="toc-text">原子性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一致性"><span class="toc-number">4.</span> <span class="toc-text">一致性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隔离性"><span class="toc-number">5.</span> <span class="toc-text">隔离性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持久性"><span class="toc-number">6.</span> <span class="toc-text">持久性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring事务管理"><span class="toc-number">7.</span> <span class="toc-text">Spring事务管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务管理器PlatformTransactionManager"><span class="toc-number">8.</span> <span class="toc-text">事务管理器PlatformTransactionManager</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务定义信息TransactionDefinition"><span class="toc-number">9.</span> <span class="toc-text">事务定义信息TransactionDefinition</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+             
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="60-Permutation-Sequence"><a href="#60-Permutation-Sequence" class="headerlink" title="60. Permutation Sequence"></a>60. Permutation Sequence</h1><p>The set [1,2,3,…,n] contains a total of n! unique permutations.</p>
-<p>By listing and labeling all of the permutations in order,<br>We get the following sequence (ie, for n = 3):</p>
-<p>“123”<br>“132”<br>“213”<br>“231”<br>“312”<br>“321”<br>Given n and k, return the kth permutation sequence.<br></p>
-        
-          <a class="article-more-a" href="/2018/01/03/LeetCode-60-Permutation-Sequence/#more">more >></a>
-        
+        <h2 id="什么是事务？"><a href="#什么是事务？" class="headerlink" title="什么是事务？"></a>什么是事务？</h2><p>事务指的是逻辑上的一组操作，这组操作要么全部成功，要么全部失败。</p>
+<h2 id="事务的特性（ACID）"><a href="#事务的特性（ACID）" class="headerlink" title="事务的特性（ACID）"></a>事务的特性（ACID）</h2><p>1、原子性<br>2、一致性<br>3、隔离性<br>4、持久性</p>
+<h2 id="原子性："><a href="#原子性：" class="headerlink" title="原子性："></a>原子性：</h2><p>原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。</p>
+<h2 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a>一致性</h2><p>一致性指事务前后数据的完整性必须保持一致。</p>
+<h2 id="隔离性"><a href="#隔离性" class="headerlink" title="隔离性"></a>隔离性</h2><p>隔离性指多个用户并发访问数据库时，一个用户的事务不能被其他用户的事务所干扰，多个并发事务之间数据要相互隔离。</p>
+<h2 id="持久性"><a href="#持久性" class="headerlink" title="持久性"></a>持久性</h2><p>持久性是指一个事务一旦提交，它对数据库中数据的改变就是永久性的，即便数据库发生故障也不应该对其有任何影响。</p>
+<h2 id="Spring事务管理"><a href="#Spring事务管理" class="headerlink" title="Spring事务管理"></a>Spring事务管理</h2><p>Spring事务管理高层抽象主要包括3个接口：<br>PlatformTransactionManager(事务管理器)<br>TransactionDefinition(事务定义信息，包含隔离级别、事务传播行为、超时、只读)<br>TransactionStatus(事务具体运行状态)</p>
+<h2 id="事务管理器PlatformTransactionManager"><a href="#事务管理器PlatformTransactionManager" class="headerlink" title="事务管理器PlatformTransactionManager"></a>事务管理器PlatformTransactionManager</h2><p>Spring为不同的持久化框架提供了不同的PlatformTransactionManager，如下图所示：<br><img src="/2018/03/07/Spring事务管理/为不同的持久化框架提供不同的事务管理器.png" alt="为不同的持久化框架提供不同的事务管理器"></p>
+<h2 id="事务定义信息TransactionDefinition"><a href="#事务定义信息TransactionDefinition" class="headerlink" title="事务定义信息TransactionDefinition"></a>事务定义信息TransactionDefinition</h2><p>如果不考虑事务的隔离性，会引发安全问题如下：</p>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃卫龙<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -191,7 +253,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring事务管理</a>
         		</li>
       		
 		</ul>
@@ -201,22 +263,87 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
+        			<a href="/categories/Spring//" class="article-tag-list-link color2">Spring</a>
         		</li>
       		
 		</ul>
 	</div>
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/03/LeetCode-60-Permutation-Sequence/">展开全文 >></a>
-        </p>
-      
 
+      
+        <div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/07/Spring事务管理/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  <nav id="article-nav">
+  
+    <a href="/2018/03/08/20届找实习之阿里，头条，网易，小米，搜狐，百度等面经合集/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          20届找实习之阿里，头条，网易，小米，搜狐，百度等面经合集
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/10/19届实习前端面经/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">19届实习前端面经</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -231,258 +358,39 @@
         </div>
         
         
-    </div>
-</aside>
-  
-    <article id="post-LeetCode-59-Spiral-Matrix-II" class="article article-type-post article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/03/LeetCode-59-Spiral-Matrix-II/">LeetCode 59. Spiral Matrix II</a>
-    </h1>
-        
-        <a href="/2018/01/03/LeetCode-59-Spiral-Matrix-II/" class="archive-article-date">
-  	<time datetime="2018-01-03T13:34:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-03</time>
-</a>
-        
-	 
-
-      </header>
-    
-
-    <!-- 目录内容 -->
-       
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="59-Spiral-Matrix-II"><a href="#59-Spiral-Matrix-II" class="headerlink" title="59. Spiral Matrix II"></a>59. Spiral Matrix II</h1><p>Given an integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.</p>
-<p>For example,<br>Given n = 3,</p>
-<p>You should return the following matrix:<br>[<br> [ 1, 2, 3 ],<br> [ 8, 9, 4 ],<br> [ 7, 6, 5 ]<br>]<br></p>
-        
-          <a class="article-more-a" href="/2018/01/03/LeetCode-59-Spiral-Matrix-II/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-      <div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/03/LeetCode-59-Spiral-Matrix-II/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是事务？"><span class="toc-number">1.</span> <span class="toc-text">什么是事务？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务的特性（ACID）"><span class="toc-number">2.</span> <span class="toc-text">事务的特性（ACID）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原子性："><span class="toc-number">3.</span> <span class="toc-text">原子性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一致性"><span class="toc-number">4.</span> <span class="toc-text">一致性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隔离性"><span class="toc-number">5.</span> <span class="toc-text">隔离性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持久性"><span class="toc-number">6.</span> <span class="toc-text">持久性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring事务管理"><span class="toc-number">7.</span> <span class="toc-text">Spring事务管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务管理器PlatformTransactionManager"><span class="toc-number">8.</span> <span class="toc-text">事务管理器PlatformTransactionManager</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务定义信息TransactionDefinition"><span class="toc-number">9.</span> <span class="toc-text">事务定义信息TransactionDefinition</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
-  
-    <article id="post-细说Java两大关键字volatile和synchronized" class="article article-type-post article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/31/细说Java两大关键字volatile和synchronized/">细说Java两大关键字volatile和synchronized</a>
-    </h1>
-        
-        <a href="/2017/12/31/细说Java两大关键字volatile和synchronized/" class="archive-article-date">
-  	<time datetime="2017-12-31T15:54:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
-        
-	 
 
-      </header>
-    
 
-    <!-- 目录内容 -->
-       
-<!-- 目录内容结束 -->
 
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1、volatile关键字"><a href="#1、volatile关键字" class="headerlink" title="1、volatile关键字"></a>1、volatile关键字</h1><h2 id="1-1-volatile关键字具备可见性和有序性。"><a href="#1-1-volatile关键字具备可见性和有序性。" class="headerlink" title="1.1 volatile关键字具备可见性和有序性。"></a>1.1 volatile关键字具备可见性和有序性。</h2><p>可见性：一个线程对共享变量值的修改，能够及时地被其他线程看到。由此又引出了一个概念。共享变量：如果一个变量在多个线程的工作内存中都存在副本，那么这个变量就是这几个线程的共享变量。下文会有详细例子讲解。<br><img src="/2017/12/31/细说Java两大关键字volatile和synchronized/Java内存模型.png" alt="Java内存模型"></p>
-        
-          <a class="article-more-a" href="/2017/12/31/细说Java两大关键字volatile和synchronized/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-      <div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/31/细说Java两大关键字volatile和synchronized/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+<!-- 来必力City版安装代码 -->
+  <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTIwOS83NzU4" style="margin: 0 50px  0 50px">
+  	<script type="text/javascript">
+     (function(d, s) {
+         var j, e = d.getElementsByTagName(s)[0];
+         if (typeof LivereTower === 'function') { return; }
+         j = d.createElement(s);
+         j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+         j.async = true;
+         e.parentNode.insertBefore(j, e);
+     })(document, 'script');
+  	</script>
+  <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
   </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-  
-    <article id="post-如何从Java小白到收割大厂offer" class="article article-type-post article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/30/如何从Java小白到收割大厂offer/">如何从Java小白到收割大厂offer</a>
-    </h1>
-        
-        <a href="/2017/12/30/如何从Java小白到收割大厂offer/" class="archive-article-date">
-  	<time datetime="2017-12-30T08:05:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        
-	 
-
-      </header>
-    
-
-    <!-- 目录内容 -->
-       
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="收割大厂offer需要具备的条件"><a href="#收割大厂offer需要具备的条件" class="headerlink" title="收割大厂offer需要具备的条件"></a>收割大厂offer需要具备的条件</h1><p>本人也一直在关注互联网，觉得还是有些了解。互联网要求是越来越高了，竞争的人太多了，不过你不用担心，个人觉得，你到了中层的水平，拿二线offer应该问题，人多也有人多的好处，我比别人多努力一点，我就超过了很多人了，个人觉得需要具备以下条件，如图所示：<br><img src="/2017/12/30/如何从Java小白到收割大厂offer/大厂offer收割.png" alt="大厂要求"><br></p>
-        
-          <a class="article-more-a" href="/2017/12/30/如何从Java小白到收割大厂offer/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">offer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-      <div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/30/如何从Java小白到收割大厂offer/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+  <!-- City版安装代码已完成 -->
           </div>
         </div>
       </div>
@@ -513,8 +421,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

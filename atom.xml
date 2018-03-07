@@ -42,6 +42,32 @@
   </entry>
   
   <entry>
+    <title>Spring事务管理</title>
+    <link href="http://yoursite.com/2018/03/07/Spring%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/"/>
+    <id>http://yoursite.com/2018/03/07/Spring事务管理/</id>
+    <published>2018-03-07T02:47:33.000Z</published>
+    <updated>2018-03-07T07:52:28.142Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="什么是事务？"><a href="#什么是事务？" class="headerlink" title="什么是事务？"></a>什么是事务？</h2><p>事务指的是逻辑上的一组操作，这组操作要么全部成功，要么全部失败。</p><h2 id="事务的特性（ACID）"><a href="#事务的特性（ACID）" class="headerlink" title="事务的特性（ACID）"></a>事务的特性（ACID）</h2><p>1、原子性<br>2、一致性<br>3、隔离性<br>4、持久性</p><h2 id="原子性："><a href="#原子性：" class="headerlink" title="原子性："></a>原子性：</h2><p>原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。</p><h2 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a>一致性</h2><p>一致性指事务前后数据的完整性必须保持一致。</p><h2 id="隔离性"><a href="#隔离性" class="headerlink" title="隔离性"></a>隔离性</h2><p>隔离性指多个用户并发访问数据库时，一个用户的事务不能被其他用户的事务所干扰，多个并发事务之间数据要相互隔离。</p><h2 id="持久性"><a href="#持久性" class="headerlink" title="持久性"></a>持久性</h2><p>持久性是指一个事务一旦提交，它对数据库中数据的改变就是永久性的，即便数据库发生故障也不应该对其有任何影响。</p><h2 id="Spring事务管理"><a href="#Spring事务管理" class="headerlink" title="Spring事务管理"></a>Spring事务管理</h2><p>Spring事务管理高层抽象主要包括3个接口：<br>PlatformTransactionManager(事务管理器)<br>TransactionDefinition(事务定义信息，包含隔离级别、事务传播行为、超时、只读)<br>TransactionStatus(事务具体运行状态)</p><h2 id="事务管理器PlatformTransactionManager"><a href="#事务管理器PlatformTransactionManager" class="headerlink" title="事务管理器PlatformTransactionManager"></a>事务管理器PlatformTransactionManager</h2><p>Spring为不同的持久化框架提供了不同的PlatformTransactionManager，如下图所示：<br><img src="/2018/03/07/Spring事务管理/为不同的持久化框架提供不同的事务管理器.png" alt="为不同的持久化框架提供不同的事务管理器"></p><h2 id="事务定义信息TransactionDefinition"><a href="#事务定义信息TransactionDefinition" class="headerlink" title="事务定义信息TransactionDefinition"></a>事务定义信息TransactionDefinition</h2><p>如果不考虑事务的隔离性，会引发安全问题如下：</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;什么是事务？&quot;&gt;&lt;a href=&quot;#什么是事务？&quot; class=&quot;headerlink&quot; title=&quot;什么是事务？&quot;&gt;&lt;/a&gt;什么是事务？&lt;/h2&gt;&lt;p&gt;事务指的是逻辑上的一组操作，这组操作要么全部成功，要么全部失败。&lt;/p&gt;
+&lt;h2 id=&quot;事务的特性（ACI
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://yoursite.com/categories/Spring/"/>
+    
+    
+      <category term="Spring事务管理" scheme="http://yoursite.com/tags/Spring%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>19届实习前端面经</title>
     <link href="http://yoursite.com/2018/01/10/19%E5%B1%8A%E5%AE%9E%E4%B9%A0%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/"/>
     <id>http://yoursite.com/2018/01/10/19届实习前端面经/</id>

@@ -17,7 +17,10 @@
 <meta property="og:description" content="什么是事务？事务指的是逻辑上的一组操作，这组操作要么全部成功，要么全部失败。 事务的特性（ACID）1、原子性2、一致性3、隔离性4、持久性 原子性：原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。 一致性一致性指事务前后数据的完整性必须保持一致。 隔离性隔离性指多个用户并发访问数据库时，一个用户的事务不能被其他用户的事务所干扰，多个并发事务之间数据要相互隔离。 持久">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/03/07/Spring事务管理/为不同的持久化框架提供不同的事务管理器.png">
-<meta property="og:updated_time" content="2018-03-07T07:52:28.142Z">
+<meta property="og:image" content="http://yoursite.com/2018/03/07/Spring事务管理/TransactionDefinition中事务的隔离级别.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/07/Spring事务管理/TransactionDefinition中事务的传播行为.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/07/Spring事务管理/事务具体状态.png">
+<meta property="og:updated_time" content="2018-03-08T02:55:30.575Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring事务管理">
 <meta name="twitter:description" content="什么是事务？事务指的是逻辑上的一组操作，这组操作要么全部成功，要么全部失败。 事务的特性（ACID）1、原子性2、一致性3、隔离性4、持久性 原子性：原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。 一致性一致性指事务前后数据的完整性必须保持一致。 隔离性隔离性指多个用户并发访问数据库时，一个用户的事务不能被其他用户的事务所干扰，多个并发事务之间数据要相互隔离。 持久">
@@ -181,7 +184,7 @@
     <div id="toc-article" class="toc-article">
         <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn()">×</span>
         <strong class="toc-title">文章目录</strong>
-           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是事务？"><span class="toc-number">1.</span> <span class="toc-text">什么是事务？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务的特性（ACID）"><span class="toc-number">2.</span> <span class="toc-text">事务的特性（ACID）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原子性："><span class="toc-number">3.</span> <span class="toc-text">原子性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一致性"><span class="toc-number">4.</span> <span class="toc-text">一致性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隔离性"><span class="toc-number">5.</span> <span class="toc-text">隔离性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持久性"><span class="toc-number">6.</span> <span class="toc-text">持久性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring事务管理"><span class="toc-number">7.</span> <span class="toc-text">Spring事务管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务管理器PlatformTransactionManager"><span class="toc-number">8.</span> <span class="toc-text">事务管理器PlatformTransactionManager</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务定义信息TransactionDefinition"><span class="toc-number">9.</span> <span class="toc-text">事务定义信息TransactionDefinition</span></a></li></ol>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是事务？"><span class="toc-number">1.</span> <span class="toc-text">什么是事务？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务的特性（ACID）"><span class="toc-number">2.</span> <span class="toc-text">事务的特性（ACID）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原子性："><span class="toc-number">3.</span> <span class="toc-text">原子性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一致性"><span class="toc-number">4.</span> <span class="toc-text">一致性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隔离性"><span class="toc-number">5.</span> <span class="toc-text">隔离性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持久性"><span class="toc-number">6.</span> <span class="toc-text">持久性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring事务管理"><span class="toc-number">7.</span> <span class="toc-text">Spring事务管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事务管理器PlatformTransactionManager"><span class="toc-number">7.1.</span> <span class="toc-text">事务管理器PlatformTransactionManager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务定义信息TransactionDefinition"><span class="toc-number">7.2.</span> <span class="toc-text">事务定义信息TransactionDefinition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务具体状态TransactionStatus"><span class="toc-number">7.3.</span> <span class="toc-text">事务具体状态TransactionStatus</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#转账案例"><span class="toc-number">8.</span> <span class="toc-text">转账案例</span></a></li></ol>
          </div>
    <script type="text/javascript">
     function showToc(){
@@ -209,8 +212,12 @@
 <h2 id="隔离性"><a href="#隔离性" class="headerlink" title="隔离性"></a>隔离性</h2><p>隔离性指多个用户并发访问数据库时，一个用户的事务不能被其他用户的事务所干扰，多个并发事务之间数据要相互隔离。</p>
 <h2 id="持久性"><a href="#持久性" class="headerlink" title="持久性"></a>持久性</h2><p>持久性是指一个事务一旦提交，它对数据库中数据的改变就是永久性的，即便数据库发生故障也不应该对其有任何影响。</p>
 <h2 id="Spring事务管理"><a href="#Spring事务管理" class="headerlink" title="Spring事务管理"></a>Spring事务管理</h2><p>Spring事务管理高层抽象主要包括3个接口：<br>PlatformTransactionManager(事务管理器)<br>TransactionDefinition(事务定义信息，包含隔离级别、事务传播行为、超时、只读)<br>TransactionStatus(事务具体运行状态)</p>
-<h2 id="事务管理器PlatformTransactionManager"><a href="#事务管理器PlatformTransactionManager" class="headerlink" title="事务管理器PlatformTransactionManager"></a>事务管理器PlatformTransactionManager</h2><p>Spring为不同的持久化框架提供了不同的PlatformTransactionManager，如下图所示：<br><img src="/2018/03/07/Spring事务管理/为不同的持久化框架提供不同的事务管理器.png" alt="为不同的持久化框架提供不同的事务管理器"></p>
-<h2 id="事务定义信息TransactionDefinition"><a href="#事务定义信息TransactionDefinition" class="headerlink" title="事务定义信息TransactionDefinition"></a>事务定义信息TransactionDefinition</h2><p>如果不考虑事务的隔离性，会引发安全问题如下：</p>
+<h3 id="事务管理器PlatformTransactionManager"><a href="#事务管理器PlatformTransactionManager" class="headerlink" title="事务管理器PlatformTransactionManager"></a>事务管理器PlatformTransactionManager</h3><p>Spring为不同的持久化框架提供了不同的PlatformTransactionManager，如下图所示：<br><img src="/2018/03/07/Spring事务管理/为不同的持久化框架提供不同的事务管理器.png" alt="为不同的持久化框架提供不同的事务管理器"></p>
+<h3 id="事务定义信息TransactionDefinition"><a href="#事务定义信息TransactionDefinition" class="headerlink" title="事务定义信息TransactionDefinition"></a>事务定义信息TransactionDefinition</h3><p>如果不考虑事务的隔离性，会引发安全问题如下：<br>脏读，不可重复读，幻读</p>
+<p>脏读：一个事务读取了另一个事务改写但还未提交的数据，如果这些数据被回滚，则读到的数据是无效的。<br>不可重复读：在同一个事务中，多次读取同一数据返回的结果有所不同。<br>幻读：一个事务读取了几行记录后，另一个事务插入一些记录，幻读就发生了。再后来的查询中，第一个事务就会发现有些原来没有的记录。<br>TransactionDefinition中事务的隔离级别:<br><img src="/2018/03/07/Spring事务管理/TransactionDefinition中事务的隔离级别.png" alt="TransactionDefinition中事务的隔离级别"></p>
+<p>TransactionDefinition中事务的传播行为:<br><img src="/2018/03/07/Spring事务管理/TransactionDefinition中事务的传播行为.png" alt="TransactionDefinition中事务的传播行为"></p>
+<h3 id="事务具体状态TransactionStatus"><a href="#事务具体状态TransactionStatus" class="headerlink" title="事务具体状态TransactionStatus"></a>事务具体状态TransactionStatus</h3><p><img src="/2018/03/07/Spring事务管理/事务具体状态.png" alt="事务具体状态"></p>
+<h2 id="转账案例"><a href="#转账案例" class="headerlink" title="转账案例"></a>转账案例</h2>
       
 
       
@@ -365,7 +372,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是事务？"><span class="toc-number">1.</span> <span class="toc-text">什么是事务？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务的特性（ACID）"><span class="toc-number">2.</span> <span class="toc-text">事务的特性（ACID）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原子性："><span class="toc-number">3.</span> <span class="toc-text">原子性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一致性"><span class="toc-number">4.</span> <span class="toc-text">一致性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隔离性"><span class="toc-number">5.</span> <span class="toc-text">隔离性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持久性"><span class="toc-number">6.</span> <span class="toc-text">持久性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring事务管理"><span class="toc-number">7.</span> <span class="toc-text">Spring事务管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务管理器PlatformTransactionManager"><span class="toc-number">8.</span> <span class="toc-text">事务管理器PlatformTransactionManager</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务定义信息TransactionDefinition"><span class="toc-number">9.</span> <span class="toc-text">事务定义信息TransactionDefinition</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是事务？"><span class="toc-number">1.</span> <span class="toc-text">什么是事务？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务的特性（ACID）"><span class="toc-number">2.</span> <span class="toc-text">事务的特性（ACID）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原子性："><span class="toc-number">3.</span> <span class="toc-text">原子性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一致性"><span class="toc-number">4.</span> <span class="toc-text">一致性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隔离性"><span class="toc-number">5.</span> <span class="toc-text">隔离性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持久性"><span class="toc-number">6.</span> <span class="toc-text">持久性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring事务管理"><span class="toc-number">7.</span> <span class="toc-text">Spring事务管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事务管理器PlatformTransactionManager"><span class="toc-number">7.1.</span> <span class="toc-text">事务管理器PlatformTransactionManager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务定义信息TransactionDefinition"><span class="toc-number">7.2.</span> <span class="toc-text">事务定义信息TransactionDefinition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务具体状态TransactionStatus"><span class="toc-number">7.3.</span> <span class="toc-text">事务具体状态TransactionStatus</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#转账案例"><span class="toc-number">8.</span> <span class="toc-text">转账案例</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -525,11 +532,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spring事务管理</a>
+                <a href="javascript:void(0)" class="js-tag color1">offer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">offer</a>
+                <a href="javascript:void(0)" class="js-tag color1">Spring事务管理</a>
               </li>
              
               <li class="article-tag-list-item">

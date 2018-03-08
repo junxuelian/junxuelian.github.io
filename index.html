@@ -174,7 +174,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="头条一二面（挂）"><a href="#头条一二面（挂）" class="headerlink" title="头条一二面（挂）"></a>头条一二面（挂）</h2><p>头条1面：<br>自我介绍<br>项目介绍<br>平时使用开的环境<br>redis获取一个hash的长度<br>用redis做过控频吗<br>能接受转语言吗<br>http状态码301,302<br>手写快排<br>头条2面：<br>网络部分：<br>DHCP如何实现分配ip的<br>ISO七层模型，每层都说下自己的理解和知道的，说的越多越好<br>TCP和UDP的区别，TCP如何保证可靠传输的<br>说一下常使用的协议及其对应的端口<br>Linux部分：<br>I/O多路复用<br>进程间如何通信<br>动态链接和静态链接的区别<br>进程的内存分布<br>如何查找一个进程打开所有的文件<br>设计模式：<br>工厂设计模式<br>单例设计模式<br>讲一下，说一下应用的场景。</p>
+        <h2 id="头条一二面（挂）"><a href="#头条一二面（挂）" class="headerlink" title="头条一二面（挂）"></a>头条一二面（挂）</h2><p>头条1面：<br>自我介绍<br>项目介绍<br>平时使用开的环境<br>redis获取一个hash的长度<br>用redis做过控频吗<br>能接受转语言吗<br>http状态码301,302<br>手写快排<br>头条2面：<br>网络部分：<br>DHCP如何实现分配ip的<br>OSI七层模型，每层都说下自己的理解和知道的，说的越多越好<br>TCP和UDP的区别，TCP如何保证可靠传输的<br>说一下常使用的协议及其对应的端口<br>Linux部分：<br>I/O多路复用<br>进程间如何通信<br>动态链接和静态链接的区别<br>进程的内存分布<br>如何查找一个进程打开所有的文件<br>设计模式：<br>工厂设计模式<br>单例设计模式<br>讲一下，说一下应用的场景。</p>
 <h2 id="网易两面（意思给过）"><a href="#网易两面（意思给过）" class="headerlink" title="网易两面（意思给过）"></a>网易两面（意思给过）</h2><p>自我介绍<br>hashmap<br>怎么优化这段代码<br><img src="/2018/03/08/20届找实习之阿里，头条，网易，小米，搜狐，百度等面经合集/优化代码.png" alt="优化代码"><br>两道简单算法<br>1、求连续子数组的最大和问题<br>2、走格子，从一个出发点到终点，只能向上和向右有多少种走法，连障碍点都没有<br>Java如何进行垃圾回收的<br>你用过哪些设计模式？回答：单例，观察者，工厂，责任链，适配器<br>JDK中哪些实现了单例模式？java.lang.reflect.Proxy类，java.lang.Runtime类，线程池。<br>两道设计题<br>第一道设计题：<br>比如我有个电商平台，做每日订单的异常检测，服务端代码应该写。、<br>第二道设计题：<br>比如窝网易邮箱春节要做一个活动，我网易邮箱用户量有3.4亿吧！但是我只允许8千万人参加，最后在8千万人里面产生一二三等奖，有一台物理机和一台数据库服务器。你怎么来设计。</p>
 <p>二面<br>为什么会有内核态，保护模式你知道吗?<br>文件是怎么在磁盘上存储的？<br>有了进程为何还要线程呢，不同进程和线程他们之间有什么不同<br>dhcp数据包格式及其原理<br>innodb聚集索引b+树叶子节点和磁盘什么顺序相同。</p>
 <h2 id="阿里一面"><a href="#阿里一面" class="headerlink" title="阿里一面"></a>阿里一面</h2><p>1、自我介绍<br>2、全程怼项目，问的及其细，包括你为什么选择这种方案来实现，<br>具体怎么存储怎么做的，相当细，遇到这类面试官，项目不够熟，就会翻车了。<br>3、redis原子操作怎么用比较好<br>4、消息队列会吗？<br></p>
@@ -265,8 +265,12 @@
 <h2 id="隔离性"><a href="#隔离性" class="headerlink" title="隔离性"></a>隔离性</h2><p>隔离性指多个用户并发访问数据库时，一个用户的事务不能被其他用户的事务所干扰，多个并发事务之间数据要相互隔离。</p>
 <h2 id="持久性"><a href="#持久性" class="headerlink" title="持久性"></a>持久性</h2><p>持久性是指一个事务一旦提交，它对数据库中数据的改变就是永久性的，即便数据库发生故障也不应该对其有任何影响。</p>
 <h2 id="Spring事务管理"><a href="#Spring事务管理" class="headerlink" title="Spring事务管理"></a>Spring事务管理</h2><p>Spring事务管理高层抽象主要包括3个接口：<br>PlatformTransactionManager(事务管理器)<br>TransactionDefinition(事务定义信息，包含隔离级别、事务传播行为、超时、只读)<br>TransactionStatus(事务具体运行状态)</p>
-<h2 id="事务管理器PlatformTransactionManager"><a href="#事务管理器PlatformTransactionManager" class="headerlink" title="事务管理器PlatformTransactionManager"></a>事务管理器PlatformTransactionManager</h2><p>Spring为不同的持久化框架提供了不同的PlatformTransactionManager，如下图所示：<br><img src="/2018/03/07/Spring事务管理/为不同的持久化框架提供不同的事务管理器.png" alt="为不同的持久化框架提供不同的事务管理器"></p>
-<h2 id="事务定义信息TransactionDefinition"><a href="#事务定义信息TransactionDefinition" class="headerlink" title="事务定义信息TransactionDefinition"></a>事务定义信息TransactionDefinition</h2><p>如果不考虑事务的隔离性，会引发安全问题如下：</p>
+<h3 id="事务管理器PlatformTransactionManager"><a href="#事务管理器PlatformTransactionManager" class="headerlink" title="事务管理器PlatformTransactionManager"></a>事务管理器PlatformTransactionManager</h3><p>Spring为不同的持久化框架提供了不同的PlatformTransactionManager，如下图所示：<br><img src="/2018/03/07/Spring事务管理/为不同的持久化框架提供不同的事务管理器.png" alt="为不同的持久化框架提供不同的事务管理器"></p>
+<h3 id="事务定义信息TransactionDefinition"><a href="#事务定义信息TransactionDefinition" class="headerlink" title="事务定义信息TransactionDefinition"></a>事务定义信息TransactionDefinition</h3><p>如果不考虑事务的隔离性，会引发安全问题如下：<br>脏读，不可重复读，幻读</p>
+<p>脏读：一个事务读取了另一个事务改写但还未提交的数据，如果这些数据被回滚，则读到的数据是无效的。<br>不可重复读：在同一个事务中，多次读取同一数据返回的结果有所不同。<br>幻读：一个事务读取了几行记录后，另一个事务插入一些记录，幻读就发生了。再后来的查询中，第一个事务就会发现有些原来没有的记录。<br>TransactionDefinition中事务的隔离级别:<br><img src="/2018/03/07/Spring事务管理/TransactionDefinition中事务的隔离级别.png" alt="TransactionDefinition中事务的隔离级别"></p>
+<p>TransactionDefinition中事务的传播行为:<br><img src="/2018/03/07/Spring事务管理/TransactionDefinition中事务的传播行为.png" alt="TransactionDefinition中事务的传播行为"></p>
+<h3 id="事务具体状态TransactionStatus"><a href="#事务具体状态TransactionStatus" class="headerlink" title="事务具体状态TransactionStatus"></a>事务具体状态TransactionStatus</h3><p><img src="/2018/03/07/Spring事务管理/事务具体状态.png" alt="事务具体状态"></p>
+<h2 id="转账案例"><a href="#转账案例" class="headerlink" title="转账案例"></a>转账案例</h2>
       
 
       
@@ -789,11 +793,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spring事务管理</a>
+                <a href="javascript:void(0)" class="js-tag color1">offer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">offer</a>
+                <a href="javascript:void(0)" class="js-tag color1">Spring事务管理</a>
               </li>
              
               <li class="article-tag-list-item">

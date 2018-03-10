@@ -265,13 +265,10 @@
 <h2 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a>一致性</h2><p>一致性指事务前后数据的完整性必须保持一致。</p>
 <h2 id="隔离性"><a href="#隔离性" class="headerlink" title="隔离性"></a>隔离性</h2><p>隔离性指多个用户并发访问数据库时，一个用户的事务不能被其他用户的事务所干扰，多个并发事务之间数据要相互隔离。</p>
 <h2 id="持久性"><a href="#持久性" class="headerlink" title="持久性"></a>持久性</h2><p>持久性是指一个事务一旦提交，它对数据库中数据的改变就是永久性的，即便数据库发生故障也不应该对其有任何影响。</p>
-<h2 id="Spring事务管理"><a href="#Spring事务管理" class="headerlink" title="Spring事务管理"></a>Spring事务管理</h2><p>Spring事务管理高层抽象主要包括3个接口：<br>PlatformTransactionManager(事务管理器)<br>TransactionDefinition(事务定义信息，包含隔离级别、事务传播行为、超时、只读)<br>TransactionStatus(事务具体运行状态)</p>
-<h3 id="事务管理器PlatformTransactionManager"><a href="#事务管理器PlatformTransactionManager" class="headerlink" title="事务管理器PlatformTransactionManager"></a>事务管理器PlatformTransactionManager</h3><p>Spring为不同的持久化框架提供了不同的PlatformTransactionManager，如下图所示：<br><img src="/2018/03/07/Spring事务管理/为不同的持久化框架提供不同的事务管理器.png" alt="为不同的持久化框架提供不同的事务管理器"></p>
-<h3 id="事务定义信息TransactionDefinition"><a href="#事务定义信息TransactionDefinition" class="headerlink" title="事务定义信息TransactionDefinition"></a>事务定义信息TransactionDefinition</h3><p>如果不考虑事务的隔离性，会引发安全问题如下：<br>脏读，不可重复读，幻读</p>
-<p>脏读：一个事务读取了另一个事务改写但还未提交的数据，如果这些数据被回滚，则读到的数据是无效的。<br>不可重复读：在同一个事务中，多次读取同一数据返回的结果有所不同。<br>幻读：一个事务读取了几行记录后，另一个事务插入一些记录，幻读就发生了。再后来的查询中，第一个事务就会发现有些原来没有的记录。<br>TransactionDefinition中事务的隔离级别:<br><img src="/2018/03/07/Spring事务管理/TransactionDefinition中事务的隔离级别.png" alt="TransactionDefinition中事务的隔离级别"></p>
-<p>TransactionDefinition中事务的传播行为:<br><img src="/2018/03/07/Spring事务管理/TransactionDefinition中事务的传播行为.png" alt="TransactionDefinition中事务的传播行为"></p>
-<h3 id="事务具体状态TransactionStatus"><a href="#事务具体状态TransactionStatus" class="headerlink" title="事务具体状态TransactionStatus"></a>事务具体状态TransactionStatus</h3><p><img src="/2018/03/07/Spring事务管理/事务具体状态.png" alt="事务具体状态"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Spring将事务管理分成了两类:<br>    编程式事务管理:<br>        手动编写代码进行事务管理.(很少使用)<br>    声明式事务管理:<br>        基于TransactionProxyFactoryBean的方式.(很少使用)<br>             需要为每个进行事务管理的类,配置一个TransactionProxyFactoryBean进行增强.<br>        基于AspectJ的XML方式.(经常使用)<br>            一旦配置好之后,类上不需要添加任何东西<br>        基于注解方式.(经常使用)<br>            配置简单,需要在业务层上添加一个@Transactional的注解.</p>
+<h2 id="Spring事务管理"><a href="#Spring事务管理" class="headerlink" title="Spring事务管理"></a>Spring事务管理</h2><p>Spring事务管理高层抽象主要包括3个接口：<br>PlatformTransactionManager(事务管理器)<br>TransactionDefinition(事务定义信息，包含隔离级别、事务传播行为、超时、只读)<br>TransactionStatus(事务具体运行状态)<br></p>
+        
+          <a class="article-more-a" href="/2018/03/07/Spring事务管理/#more">more >></a>
+        
       
 
       
@@ -782,19 +779,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MySQL执行计划解读</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spring事务管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">MySQL执行计划解读</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Mysql设计规范</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Spring事务管理</a>
               </li>
              
               <li class="article-tag-list-item">

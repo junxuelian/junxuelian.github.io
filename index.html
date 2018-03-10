@@ -271,7 +271,7 @@
 <p>脏读：一个事务读取了另一个事务改写但还未提交的数据，如果这些数据被回滚，则读到的数据是无效的。<br>不可重复读：在同一个事务中，多次读取同一数据返回的结果有所不同。<br>幻读：一个事务读取了几行记录后，另一个事务插入一些记录，幻读就发生了。再后来的查询中，第一个事务就会发现有些原来没有的记录。<br>TransactionDefinition中事务的隔离级别:<br><img src="/2018/03/07/Spring事务管理/TransactionDefinition中事务的隔离级别.png" alt="TransactionDefinition中事务的隔离级别"></p>
 <p>TransactionDefinition中事务的传播行为:<br><img src="/2018/03/07/Spring事务管理/TransactionDefinition中事务的传播行为.png" alt="TransactionDefinition中事务的传播行为"></p>
 <h3 id="事务具体状态TransactionStatus"><a href="#事务具体状态TransactionStatus" class="headerlink" title="事务具体状态TransactionStatus"></a>事务具体状态TransactionStatus</h3><p><img src="/2018/03/07/Spring事务管理/事务具体状态.png" alt="事务具体状态"></p>
-<h2 id="转账案例"><a href="#转账案例" class="headerlink" title="转账案例"></a>转账案例</h2>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Spring将事务管理分成了两类:<br>    编程式事务管理:<br>        手动编写代码进行事务管理.(很少使用)<br>    声明式事务管理:<br>        基于TransactionProxyFactoryBean的方式.(很少使用)<br>             需要为每个进行事务管理的类,配置一个TransactionProxyFactoryBean进行增强.<br>        基于AspectJ的XML方式.(经常使用)<br>            一旦配置好之后,类上不需要添加任何东西<br>        基于注解方式.(经常使用)<br>            配置简单,需要在业务层上添加一个@Transactional的注解.</p>
       
 
       
@@ -782,6 +782,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">MySQL执行计划解读</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Spring事务管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
@@ -790,15 +798,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MySQL执行计划解读</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spring事务管理</a>
               </li>
              
               <li class="article-tag-list-item">

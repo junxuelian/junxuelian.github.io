@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/03/07/Spring事务管理/TransactionDefinition中事务的隔离级别.png">
 <meta property="og:image" content="http://yoursite.com/2018/03/07/Spring事务管理/TransactionDefinition中事务的传播行为.png">
 <meta property="og:image" content="http://yoursite.com/2018/03/07/Spring事务管理/事务具体状态.png">
-<meta property="og:updated_time" content="2018-03-08T02:55:30.575Z">
+<meta property="og:updated_time" content="2018-03-10T15:33:48.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring事务管理">
 <meta name="twitter:description" content="什么是事务？事务指的是逻辑上的一组操作，这组操作要么全部成功，要么全部失败。 事务的特性（ACID）1、原子性2、一致性3、隔离性4、持久性 原子性：原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。 一致性一致性指事务前后数据的完整性必须保持一致。 隔离性隔离性指多个用户并发访问数据库时，一个用户的事务不能被其他用户的事务所干扰，多个并发事务之间数据要相互隔离。 持久">
@@ -184,7 +184,7 @@
     <div id="toc-article" class="toc-article">
         <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn()">×</span>
         <strong class="toc-title">文章目录</strong>
-           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是事务？"><span class="toc-number">1.</span> <span class="toc-text">什么是事务？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务的特性（ACID）"><span class="toc-number">2.</span> <span class="toc-text">事务的特性（ACID）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原子性："><span class="toc-number">3.</span> <span class="toc-text">原子性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一致性"><span class="toc-number">4.</span> <span class="toc-text">一致性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隔离性"><span class="toc-number">5.</span> <span class="toc-text">隔离性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持久性"><span class="toc-number">6.</span> <span class="toc-text">持久性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring事务管理"><span class="toc-number">7.</span> <span class="toc-text">Spring事务管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事务管理器PlatformTransactionManager"><span class="toc-number">7.1.</span> <span class="toc-text">事务管理器PlatformTransactionManager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务定义信息TransactionDefinition"><span class="toc-number">7.2.</span> <span class="toc-text">事务定义信息TransactionDefinition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务具体状态TransactionStatus"><span class="toc-number">7.3.</span> <span class="toc-text">事务具体状态TransactionStatus</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#转账案例"><span class="toc-number">8.</span> <span class="toc-text">转账案例</span></a></li></ol>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是事务？"><span class="toc-number">1.</span> <span class="toc-text">什么是事务？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务的特性（ACID）"><span class="toc-number">2.</span> <span class="toc-text">事务的特性（ACID）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原子性："><span class="toc-number">3.</span> <span class="toc-text">原子性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一致性"><span class="toc-number">4.</span> <span class="toc-text">一致性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隔离性"><span class="toc-number">5.</span> <span class="toc-text">隔离性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持久性"><span class="toc-number">6.</span> <span class="toc-text">持久性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring事务管理"><span class="toc-number">7.</span> <span class="toc-text">Spring事务管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事务管理器PlatformTransactionManager"><span class="toc-number">7.1.</span> <span class="toc-text">事务管理器PlatformTransactionManager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务定义信息TransactionDefinition"><span class="toc-number">7.2.</span> <span class="toc-text">事务定义信息TransactionDefinition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务具体状态TransactionStatus"><span class="toc-number">7.3.</span> <span class="toc-text">事务具体状态TransactionStatus</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol>
          </div>
    <script type="text/javascript">
     function showToc(){
@@ -217,7 +217,7 @@
 <p>脏读：一个事务读取了另一个事务改写但还未提交的数据，如果这些数据被回滚，则读到的数据是无效的。<br>不可重复读：在同一个事务中，多次读取同一数据返回的结果有所不同。<br>幻读：一个事务读取了几行记录后，另一个事务插入一些记录，幻读就发生了。再后来的查询中，第一个事务就会发现有些原来没有的记录。<br>TransactionDefinition中事务的隔离级别:<br><img src="/2018/03/07/Spring事务管理/TransactionDefinition中事务的隔离级别.png" alt="TransactionDefinition中事务的隔离级别"></p>
 <p>TransactionDefinition中事务的传播行为:<br><img src="/2018/03/07/Spring事务管理/TransactionDefinition中事务的传播行为.png" alt="TransactionDefinition中事务的传播行为"></p>
 <h3 id="事务具体状态TransactionStatus"><a href="#事务具体状态TransactionStatus" class="headerlink" title="事务具体状态TransactionStatus"></a>事务具体状态TransactionStatus</h3><p><img src="/2018/03/07/Spring事务管理/事务具体状态.png" alt="事务具体状态"></p>
-<h2 id="转账案例"><a href="#转账案例" class="headerlink" title="转账案例"></a>转账案例</h2>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Spring将事务管理分成了两类:<br>    编程式事务管理:<br>        手动编写代码进行事务管理.(很少使用)<br>    声明式事务管理:<br>        基于TransactionProxyFactoryBean的方式.(很少使用)<br>             需要为每个进行事务管理的类,配置一个TransactionProxyFactoryBean进行增强.<br>        基于AspectJ的XML方式.(经常使用)<br>            一旦配置好之后,类上不需要添加任何东西<br>        基于注解方式.(经常使用)<br>            配置简单,需要在业务层上添加一个@Transactional的注解.</p>
       
 
       
@@ -372,7 +372,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是事务？"><span class="toc-number">1.</span> <span class="toc-text">什么是事务？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务的特性（ACID）"><span class="toc-number">2.</span> <span class="toc-text">事务的特性（ACID）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原子性："><span class="toc-number">3.</span> <span class="toc-text">原子性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一致性"><span class="toc-number">4.</span> <span class="toc-text">一致性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隔离性"><span class="toc-number">5.</span> <span class="toc-text">隔离性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持久性"><span class="toc-number">6.</span> <span class="toc-text">持久性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring事务管理"><span class="toc-number">7.</span> <span class="toc-text">Spring事务管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事务管理器PlatformTransactionManager"><span class="toc-number">7.1.</span> <span class="toc-text">事务管理器PlatformTransactionManager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务定义信息TransactionDefinition"><span class="toc-number">7.2.</span> <span class="toc-text">事务定义信息TransactionDefinition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务具体状态TransactionStatus"><span class="toc-number">7.3.</span> <span class="toc-text">事务具体状态TransactionStatus</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#转账案例"><span class="toc-number">8.</span> <span class="toc-text">转账案例</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是事务？"><span class="toc-number">1.</span> <span class="toc-text">什么是事务？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务的特性（ACID）"><span class="toc-number">2.</span> <span class="toc-text">事务的特性（ACID）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原子性："><span class="toc-number">3.</span> <span class="toc-text">原子性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一致性"><span class="toc-number">4.</span> <span class="toc-text">一致性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隔离性"><span class="toc-number">5.</span> <span class="toc-text">隔离性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#持久性"><span class="toc-number">6.</span> <span class="toc-text">持久性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring事务管理"><span class="toc-number">7.</span> <span class="toc-text">Spring事务管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事务管理器PlatformTransactionManager"><span class="toc-number">7.1.</span> <span class="toc-text">事务管理器PlatformTransactionManager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务定义信息TransactionDefinition"><span class="toc-number">7.2.</span> <span class="toc-text">事务定义信息TransactionDefinition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务具体状态TransactionStatus"><span class="toc-number">7.3.</span> <span class="toc-text">事务具体状态TransactionStatus</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -520,6 +520,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">MySQL执行计划解读</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Spring事务管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
@@ -528,15 +536,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MySQL执行计划解读</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spring事务管理</a>
               </li>
              
               <li class="article-tag-list-item">

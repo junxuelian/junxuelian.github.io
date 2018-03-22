@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-03-21T01:49:54.441Z</updated>
+  <updated>2018-03-22T01:49:01.951Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>给出一个树的前序遍历，输出这个树所有可能的中序遍历</title>
+    <link href="http://yoursite.com/2018/03/22/%E7%BB%99%E5%87%BA%E4%B8%80%E4%B8%AA%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86%EF%BC%8C%E8%BE%93%E5%87%BA%E8%BF%99%E4%B8%AA%E6%A0%91%E6%89%80%E6%9C%89%E5%8F%AF%E8%83%BD%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/"/>
+    <id>http://yoursite.com/2018/03/22/给出一个树的前序遍历，输出这个树所有可能的中序遍历/</id>
+    <published>2018-03-22T01:47:07.000Z</published>
+    <updated>2018-03-22T01:49:01.951Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created by chenjun on 2018/3/21.</span><br><span class="line"> */</span><br><span class="line">public class GetAllInOrdersFromPreOrder &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] arr = &#123;1, 2, 3&#125;;</span><br><span class="line">        List&lt;BinaryTree&gt; list = GetAllTrees(arr, 0, 2);</span><br><span class="line">        for (BinaryTree binaryTree : list) &#123;</span><br><span class="line">            binaryTree.PrintInOrder();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    static List&lt;BinaryTree&gt; GetAllTrees(int[] preoder, int start, int end) &#123;</span><br><span class="line">        List&lt;BinaryTree&gt;  returnTrees = new ArrayList&lt;BinaryTree&gt;();</span><br><span class="line">        if (start &gt; end || start &lt; 0 || end &gt;= preoder.length) &#123;</span><br><span class="line">            returnTrees.add(null);</span><br><span class="line">            return returnTrees;</span><br><span class="line">        &#125;</span><br><span class="line">        if (start == end) &#123;</span><br><span class="line">            returnTrees.add(new BinaryTree(preoder[start]));</span><br><span class="line">            return returnTrees;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = -1; i &lt; end - start; i++) &#123;</span><br><span class="line">            List&lt;BinaryTree&gt; leftChildren = GetAllTrees(preoder, start + 1, start + i + 1);</span><br><span class="line">            List&lt;BinaryTree&gt; rightChildren = GetAllTrees(preoder, start + 1 + i + 1, end);</span><br><span class="line">            for (BinaryTree eachLeft : leftChildren) &#123;</span><br><span class="line">                for (BinaryTree eachRight : rightChildren) &#123;</span><br><span class="line">                    BinaryTree tempRoot = new BinaryTree(preoder[start]);</span><br><span class="line">                    tempRoot.left = eachLeft;</span><br><span class="line">                    tempRoot.right = eachRight;</span><br><span class="line">                    returnTrees.add(tempRoot);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return returnTrees;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BinaryTree &#123;</span><br><span class="line">    int value;</span><br><span class="line">    BinaryTree left;</span><br><span class="line">    BinaryTree right;</span><br><span class="line"></span><br><span class="line">    public BinaryTree(int value) &#123;</span><br><span class="line">        this.value = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void PrintInOrder() &#123;</span><br><span class="line">        inOrderTravesal(this);</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void inOrderTravesal(BinaryTree root) &#123;</span><br><span class="line">        if (root == null) return;</span><br><span class="line">        inOrderTravesal(root.left);</span><br><span class="line">        System.out.print(root.value);</span><br><span class="line">        inOrderTravesal(root.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="递归" scheme="http://yoursite.com/tags/%E9%80%92%E5%BD%92/"/>
+    
+  </entry>
   
   <entry>
     <title>20届找实习之阿里，头条，网易，小米，搜狐，商汤，滴滴面经合集</title>

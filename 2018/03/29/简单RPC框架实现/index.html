@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>19届实习前端面经 | 一名行进中的码农</title>
+  <title>简单RPC框架实现 | 一名行进中的码农</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-  <meta name="description" content="本人是Java后台，所以不能很好地整理学弟前端的实习面经，你们凑合着看吧!学弟很巅峰除了上述提到了，头条，腾讯实习offer均拿到了。 网易考拉跨域promisees6flexgenerator">
-<meta name="keywords" content="面经">
+  <meta name="description" content="下面是通过Java原生的序列化、socket通信、动态代理和反射机制，实现最简单的RPC框架。它由三部分组成：1）服务提供者，它运行在服务端，负责提供服务接口定义和服务实现类。2）服务发布者，它运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用3）本地服务代理，它运行在RPC客户端，通过代理调用远程服务提供者，然后将结果进行封装返回给本地消费者。 EchoService接口定义12">
+<meta name="keywords" content="rpc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="19届实习前端面经">
-<meta property="og:url" content="http://yoursite.com/2018/01/10/19届实习前端面经/index.html">
+<meta property="og:title" content="简单RPC框架实现">
+<meta property="og:url" content="http://yoursite.com/2018/03/29/简单RPC框架实现/index.html">
 <meta property="og:site_name" content="一名行进中的码农">
-<meta property="og:description" content="本人是Java后台，所以不能很好地整理学弟前端的实习面经，你们凑合着看吧!学弟很巅峰除了上述提到了，头条，腾讯实习offer均拿到了。 网易考拉跨域promisees6flexgenerator">
+<meta property="og:description" content="下面是通过Java原生的序列化、socket通信、动态代理和反射机制，实现最简单的RPC框架。它由三部分组成：1）服务提供者，它运行在服务端，负责提供服务接口定义和服务实现类。2）服务发布者，它运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用3）本地服务代理，它运行在RPC客户端，通过代理调用远程服务提供者，然后将结果进行封装返回给本地消费者。 EchoService接口定义12">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-10T03:05:50.194Z">
+<meta property="og:image" content="http://yoursite.com/2018/03/29/简单RPC框架实现/执行结果.png">
+<meta property="og:updated_time" content="2018-03-29T03:20:06.964Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="19届实习前端面经">
-<meta name="twitter:description" content="本人是Java后台，所以不能很好地整理学弟前端的实习面经，你们凑合着看吧!学弟很巅峰除了上述提到了，头条，腾讯实习offer均拿到了。 网易考拉跨域promisees6flexgenerator">
+<meta name="twitter:title" content="简单RPC框架实现">
+<meta name="twitter:description" content="下面是通过Java原生的序列化、socket通信、动态代理和反射机制，实现最简单的RPC框架。它由三部分组成：1）服务提供者，它运行在服务端，负责提供服务接口定义和服务实现类。2）服务发布者，它运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用3）本地服务代理，它运行在RPC客户端，通过代理调用远程服务提供者，然后将结果进行封装返回给本地消费者。 EchoService接口定义12">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/29/简单RPC框架实现/执行结果.png">
   
     <link rel="alternative" href="/atom.xml" title="一名行进中的码农" type="application/atom+xml">
   
@@ -153,16 +155,16 @@
             <canvas data-colors="#eaeaea" data-sectionheight="100" data-contentid="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-19届实习前端面经" class="article article-type-post" itemscope itemprop="blogPost">
+            <article id="post-简单RPC框架实现" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         <h1 class="article-title" itemprop="name">
-      19届实习前端面经
+      简单RPC框架实现
     </h1>
         
-        <a href="/2018/01/10/19届实习前端面经/" class="archive-article-date">
-  	<time datetime="2018-01-10T02:33:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
+        <a href="/2018/03/29/简单RPC框架实现/" class="archive-article-date">
+  	<time datetime="2018-03-29T02:51:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-29</time>
 </a>
         
 	 
@@ -179,7 +181,7 @@
     <div id="toc-article" class="toc-article">
         <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn()">×</span>
         <strong class="toc-title">文章目录</strong>
-           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#网易考拉"><span class="toc-number">1.</span> <span class="toc-text">网易考拉</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#360"><span class="toc-number">2.</span> <span class="toc-text">360</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小米"><span class="toc-number">3.</span> <span class="toc-text">小米</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#滴滴-大数据平台"><span class="toc-number">4.</span> <span class="toc-text">滴滴-大数据平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思宇信息"><span class="toc-number">5.</span> <span class="toc-text">思宇信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#百度-大搜"><span class="toc-number">6.</span> <span class="toc-text">百度-大搜</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#百度"><span class="toc-number">7.</span> <span class="toc-text">百度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#百度-1"><span class="toc-number">8.</span> <span class="toc-text">百度</span></a></li></ol>
+           
          </div>
    <script type="text/javascript">
     function showToc(){
@@ -200,19 +202,15 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本人是Java后台，所以不能很好地整理学弟前端的实习面经，你们凑合着看吧!学弟很巅峰除了上述提到了，头条，腾讯实习offer均拿到了。</p>
-<h2 id="网易考拉"><a href="#网易考拉" class="headerlink" title="网易考拉"></a>网易考拉</h2><p>跨域<br>promise<br>es6<br>flex<br>generator<br><a id="more"></a></p>
-<p>项目有关<br>Echarts最难的一个点<br>雪碧图怎么做</p>
-<h2 id="360"><a href="#360" class="headerlink" title="360"></a>360</h2><p>前后端合作<br>文档书写<br>webpack<br>Vue原理<br>diff原理<br>ES6<br>微信换Token流程<br>微信为什么限制接口申请频率<br>XSS<br>CSRF<br>CSS模块化<br>动画优化</p>
-<p>二面<br>你对Vue有什么看法<br>网络错误如何debug</p>
-<h2 id="小米"><a href="#小米" class="headerlink" title="小米"></a>小米</h2><p>一面</p>
-<p>HTML5新增特性<br>CSS3垂直居中<br>ES6特性<br>Event Loop<br>axios 发送 formData：<br>HTML5 储存<br>web Worker<br>webSocket<br>Promise<br>MongoDB<br>canvas<br>this指向<br>箭头函数<br>new 发生了什么<br>在构造函数中显示 return<br>前端优化<br>Vue 组件通信 / props 单向数据流<br>Nuxt原理<br>Git如何解决冲突</p>
-<p>二面<br>Promise及其循环调用、顺序调用、无限调用<br>Promise如何取消<br>Promise 有没有不论成功失败都会执行的<br>ES6新数据结构<br>Map和Object区别<br>迭代器<br>迭代协议<br>可迭代对象<br>vue实现树组件<br>读过vue源码吗<br>vue-router 原理<br>express<br>Mongo<br>Mongo如何搭建集群<br>Node如何搭建集群</p>
-<h2 id="滴滴-大数据平台"><a href="#滴滴-大数据平台" class="headerlink" title="滴滴-大数据平台"></a>滴滴-大数据平台</h2><p>在大型项目中有遇见什么问题吗<br>对组件化有什么看法<br>推荐用vue还是react，为什么<br>组件化粒度</p>
-<h2 id="思宇信息"><a href="#思宇信息" class="headerlink" title="思宇信息"></a>思宇信息</h2><p>一面<br>px、em、rem<br>优化<br>jsonp<br>this<br>call、apply<br>json 可以用来干啥<br>HTML5<br>position<br>css选择器</p>
-<h2 id="百度-大搜"><a href="#百度-大搜" class="headerlink" title="百度-大搜"></a>百度-大搜</h2><p>垂直居中<br>rem<br>gird<br>盒模型<br>闭包<br>事件模型<br>跨域<br>diff<br>截图库内部原理，html2canvas具体过程<br>SSR性能问题有哪些，怎么解决<br>图的基本算法<br>数据库性能<br>高QPS系统如何个设计<br>内存数据库和持久化数据库架构设计<br>整个HTTP请求过程。HTTP内容有哪些<br>vdom的diff<br>Vue模板编译，和其他模板系统有什么区别</p>
-<h2 id="百度"><a href="#百度" class="headerlink" title="百度"></a>百度</h2><p>一面<br>盒模型<br>BFC<br>数组的所有方法<br>this<br>事件机制<br>setTimeout<br>HTTP code<br>缓存<br>AMD、CMD<br>Vue的理解<br>diff<br>私有变量如何实现<br>原型链、继承</p>
-<h2 id="百度-1"><a href="#百度-1" class="headerlink" title="百度"></a>百度</h2><p> 一面<br>网络：五层模型、三次握手、四次挥手、HTTP、HTTPS<br>数据结构：完全二叉树<br>操作系统：线程、进程<br>CSS 会不会阻塞（不阻塞解析阻塞渲染）<br>闪烁问题<br>页面渲染机制<br>项目</p>
+        <p>下面是通过Java原生的序列化、socket通信、动态代理和反射机制，实现最简单的RPC框架。它由三部分组成：<br>1）服务提供者，它运行在服务端，负责提供服务接口定义和服务实现类。<br>2）服务发布者，它运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用<br>3）本地服务代理，它运行在RPC客户端，通过代理调用远程服务提供者，然后将结果进行封装返回给本地消费者。</p>
+<p>EchoService接口定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface EchoService &#123;</span><br><span class="line"></span><br><span class="line">    String echo(String ping);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>EchoServiceImpl代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class EchoServiceImpl implements EchoService&#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String echo(String ping) &#123;</span><br><span class="line">        return ping != null ? ping + &quot;--&gt; I am ok.&quot; : &quot;I am ok.&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>RpcExporter代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">//负责把本地服务发布成远程服务</span><br><span class="line">public class RpcExporter &#123;</span><br><span class="line"></span><br><span class="line">    static Executor executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());</span><br><span class="line"></span><br><span class="line">    public static void exporter(String hostname, int port) throws Exception&#123;</span><br><span class="line">        ServerSocket server = new ServerSocket();</span><br><span class="line">        server.bind(new InetSocketAddress(hostname, port));</span><br><span class="line">        try &#123;</span><br><span class="line">            while(true) &#123;</span><br><span class="line">                executor.execute(new ExporterTask(server.accept()));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            server.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static class ExporterTask implements Runnable &#123;</span><br><span class="line">        Socket client = null;</span><br><span class="line">        public ExporterTask(Socket client) &#123;</span><br><span class="line">            this.client = client;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            ObjectInputStream input = null;</span><br><span class="line">            ObjectOutputStream output = null;</span><br><span class="line">            try &#123;</span><br><span class="line">                input = new ObjectInputStream(client.getInputStream());</span><br><span class="line">                String interfaceName = input.readUTF();</span><br><span class="line">                Class&lt;?&gt; service = Class.forName(interfaceName);</span><br><span class="line">                String methodName = input.readUTF();</span><br><span class="line">                Class&lt;?&gt;[] parameterTypes = (Class&lt;?&gt;[]) input.readObject();</span><br><span class="line">                Object[] arguments = (Object[]) input.readObject();</span><br><span class="line">                Method method = service.getMethod(methodName, parameterTypes);</span><br><span class="line">                Object result = method.invoke(service.newInstance(), arguments);</span><br><span class="line">                output = new ObjectOutputStream(client.getOutputStream());</span><br><span class="line">                output.writeObject(result);</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; finally &#123;</span><br><span class="line">                if (output != null) &#123;</span><br><span class="line">                    try &#123;</span><br><span class="line">                        output.close();</span><br><span class="line">                    &#125; catch (Exception e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                if (input != null) &#123;</span><br><span class="line">                    try &#123;</span><br><span class="line">                        input.close();</span><br><span class="line">                    &#125; catch (Exception e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                if (client != null) &#123;</span><br><span class="line">                    try &#123;</span><br><span class="line">                        client.close();</span><br><span class="line">                    &#125; catch (Exception e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>服务发布者主要职责如下：<br>1）作为服务端，监听客户端的TCP连接，接收到新的客户端连接之后，将其封装成Task，由线程池执行。<br>2）将客户端发送的码流反序列化成对象，反射调用服务实现者，获取执行结果。<br>3）将执行结果对象反序列化，通过socket发送给客户端。<br>4）远程服务调用完成之后，释放socket等连接资源，防止句柄泄露。</p>
+<p>RpcImporter代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">//将本地接口转换为代理，然后调用服务端</span><br><span class="line">public class RpcImporter&lt;S&gt; &#123;</span><br><span class="line"></span><br><span class="line">    public S importer(final Class&lt;?&gt; serviceClass, final InetSocketAddress addr) &#123;</span><br><span class="line">        return (S) Proxy.newProxyInstance(serviceClass.getClassLoader(), new Class&lt;?&gt;[]&#123;serviceClass.getInterfaces()[0]&#125;,</span><br><span class="line">                new InvocationHandler() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;</span><br><span class="line">                        Socket socket = null;</span><br><span class="line">                        ObjectOutputStream output = null;</span><br><span class="line">                        ObjectInputStream input = null;</span><br><span class="line">                        try &#123;</span><br><span class="line">                            socket = new Socket();</span><br><span class="line">                            socket.connect(addr);</span><br><span class="line">                            output = new ObjectOutputStream(socket.getOutputStream());</span><br><span class="line">                            output.writeUTF(serviceClass.getName());</span><br><span class="line">                            output.writeUTF(method.getName());</span><br><span class="line">                            output.writeObject(method.getParameterTypes());</span><br><span class="line">                            output.writeObject(args);</span><br><span class="line">                            input = new ObjectInputStream(socket.getInputStream());</span><br><span class="line">                            return input.readObject();</span><br><span class="line">                        &#125; finally &#123;</span><br><span class="line">                            if (socket != null) &#123;</span><br><span class="line">                                socket.close();</span><br><span class="line">                            &#125;</span><br><span class="line">                            if (output != null) &#123;</span><br><span class="line">                                output.close();</span><br><span class="line">                            &#125;</span><br><span class="line">                            if (input != null) &#123;</span><br><span class="line">                                input.close();</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>本地服务代理的主要功能如下：<br>1）将本地的接口调用转换成JDK的动态代理，在动态代理中实现接口的远程调用。<br>2）创建Socket客户端，根据指定地址连接远程服务提供者。<br>3）将远程服务调用所需的接口类、方法名、参数列表等编码后发送给服务提供者。<br>4）同步阻塞等待服务返回应答，获取应答之后返回。</p>
+<p>RpcTest代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class RpcTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        new Thread(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    RpcExporter.exporter(&quot;localhost&quot;, 8088);</span><br><span class="line">                &#125; catch (Exception e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line">        RpcImporter&lt;EchoService&gt; importer = new RpcImporter&lt;EchoService&gt;();</span><br><span class="line">        EchoService echo = importer.importer(EchoServiceImpl.class, new InetSocketAddress(&quot;localhost&quot;, 8088));</span><br><span class="line">        System.out.println(echo.echo(&quot;Are you ok?&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>首先，创建一个异步发布服务端的线程启动，用于接收RPC客户端的请求，根据请求参数调用服务实现类，返回给客户端。<br><img src="/2018/03/29/简单RPC框架实现/执行结果.png" alt="执行结果"></p>
       
 
       
@@ -255,7 +253,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面经</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rpc</a>
         		</li>
       		
 		</ul>
@@ -265,7 +263,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -317,7 +315,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/10/19届实习前端面经/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/29/简单RPC框架实现/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -330,18 +328,9 @@
 
   <nav id="article-nav">
   
-    <a href="/2018/03/07/Spring事务管理/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Spring事务管理
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/09/MySQL执行计划解读/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MySQL执行计划解读</div>
+    <a href="/2018/03/22/给出一个树的前序遍历，输出这个树所有可能的中序遍历/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">给出一个树的前序遍历，输出这个树所有可能的中序遍历</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -367,7 +356,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#网易考拉"><span class="toc-number">1.</span> <span class="toc-text">网易考拉</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#360"><span class="toc-number">2.</span> <span class="toc-text">360</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小米"><span class="toc-number">3.</span> <span class="toc-text">小米</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#滴滴-大数据平台"><span class="toc-number">4.</span> <span class="toc-text">滴滴-大数据平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思宇信息"><span class="toc-number">5.</span> <span class="toc-text">思宇信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#百度-大搜"><span class="toc-number">6.</span> <span class="toc-text">百度-大搜</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#百度"><span class="toc-number">7.</span> <span class="toc-text">百度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#百度-1"><span class="toc-number">8.</span> <span class="toc-text">百度</span></a></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>

@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>LeetCode 61. Rotate List | 一名行进中的码农</title>
+  <title>String中hashcode实现 | 一名行进中的码农</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-  <meta name="description" content="Given a list, rotate the list to the right by k places, where k is non-negative. Example: Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL and k = 2, return 4-&amp;gt;5-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;NULL.">
-<meta name="keywords" content="LeetCode">
+  <meta name="description" content="逼自己，把自己逼到极致。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 61. Rotate List">
-<meta property="og:url" content="http://yoursite.com/2018/01/03/LeetCode-61-Rotate-List/index.html">
+<meta property="og:title" content="String中hashcode实现">
+<meta property="og:url" content="http://yoursite.com/2018/03/29/String中hashcode实现-1/index.html">
 <meta property="og:site_name" content="一名行进中的码农">
-<meta property="og:description" content="Given a list, rotate the list to the right by k places, where k is non-negative. Example: Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL and k = 2, return 4-&amp;gt;5-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;NULL.">
+<meta property="og:description" content="逼自己，把自己逼到极致。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-03T16:05:41.927Z">
+<meta property="og:updated_time" content="2018-03-29T14:18:20.490Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode 61. Rotate List">
-<meta name="twitter:description" content="Given a list, rotate the list to the right by k places, where k is non-negative. Example: Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL and k = 2, return 4-&amp;gt;5-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;NULL.">
+<meta name="twitter:title" content="String中hashcode实现">
+<meta name="twitter:description" content="逼自己，把自己逼到极致。">
   
     <link rel="alternative" href="/atom.xml" title="一名行进中的码农" type="application/atom+xml">
   
@@ -153,16 +152,16 @@
             <canvas data-colors="#eaeaea" data-sectionheight="100" data-contentid="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LeetCode-61-Rotate-List" class="article article-type-post" itemscope itemprop="blogPost">
+            <article id="post-String中hashcode实现-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         <h1 class="article-title" itemprop="name">
-      LeetCode 61. Rotate List
+      String中hashcode实现
     </h1>
         
-        <a href="/2018/01/03/LeetCode-61-Rotate-List/" class="archive-article-date">
-  	<time datetime="2018-01-03T14:24:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-03</time>
+        <a href="/2018/03/29/String中hashcode实现-1/" class="archive-article-date">
+  	<time datetime="2018-03-29T14:18:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-29</time>
 </a>
         
 	 
@@ -176,11 +175,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Given a list, rotate the list to the right by k places, where k is non-negative.</p>
-<p>Example:</p>
-<p>Given 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL and k = 2,</p>
-<p>return 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL.<br><a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * public class ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     ListNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public ListNode rotateRight(ListNode head, int k) &#123;</span><br><span class="line">        if (head == null || head.next == null || k == 0) &#123;</span><br><span class="line">            return head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode h = head;</span><br><span class="line">        int len = 1;</span><br><span class="line">		//求链表长度</span><br><span class="line">        while (h.next != null) &#123;</span><br><span class="line">            len++;</span><br><span class="line">            h = h.next;</span><br><span class="line">        &#125;</span><br><span class="line">		//改成单向循环链表</span><br><span class="line">        h.next = head;</span><br><span class="line">		//找到要被置为空节点</span><br><span class="line">        for (int i = 0; i &lt; len - k % len; i++) &#123;</span><br><span class="line">            h = h.next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode t = h.next;</span><br><span class="line">        h.next = null;</span><br><span class="line">        return t;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
       
 
       
@@ -218,26 +213,8 @@
     </div>
     <div class="article-info article-info-index">
       
-      <div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-      <div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
+      
       
 
       
@@ -285,7 +262,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/03/LeetCode-61-Rotate-List/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/29/String中hashcode实现-1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -298,18 +275,9 @@
 
   <nav id="article-nav">
   
-    <a href="/2018/01/07/Mysql设计规范/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Mysql设计规范
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/03/LeetCode-60-Permutation-Sequence/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LeetCode 60. Permutation Sequence</div>
+    <a href="/2018/03/29/String中hashcode实现/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">String中hashcode实现</div>
       <i class="icon-circle-right"></i>
     </a>
   

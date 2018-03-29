@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-03-29T14:18:20.490Z</updated>
+  <updated>2018-03-29T14:45:17.654Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -18,24 +18,10 @@
   
   <entry>
     <title>String中hashcode实现</title>
-    <link href="http://yoursite.com/2018/03/29/String%E4%B8%ADhashcode%E5%AE%9E%E7%8E%B0-1/"/>
-    <id>http://yoursite.com/2018/03/29/String中hashcode实现-1/</id>
-    <published>2018-03-29T14:18:20.000Z</published>
-    <updated>2018-03-29T14:18:20.490Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>String中hashcode实现</title>
     <link href="http://yoursite.com/2018/03/29/String%E4%B8%ADhashcode%E5%AE%9E%E7%8E%B0/"/>
     <id>http://yoursite.com/2018/03/29/String中hashcode实现/</id>
     <published>2018-03-29T14:02:08.000Z</published>
-    <updated>2018-03-29T14:16:50.640Z</updated>
+    <updated>2018-03-29T14:45:17.654Z</updated>
     
     <content type="html"><![CDATA[<p>String中hashcode源代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public int hashCode() &#123;</span><br><span class="line">        int h = hash;</span><br><span class="line">        if (h == 0 &amp;&amp; value.length &gt; 0) &#123;</span><br><span class="line">            char val[] = value;</span><br><span class="line"></span><br><span class="line">            for (int i = 0; i &lt; value.length; i++) &#123;</span><br><span class="line">                h = 31 * h + val[i];</span><br><span class="line">            &#125;</span><br><span class="line">            hash = h;</span><br><span class="line">        &#125;</span><br><span class="line">        return h;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p><p>hashcode最终值是这么计算出来的：s[0]31^(n-1) + s[1]31^(n-2) + … + s[n-1]<br>你们会奇怪为何系数会是31呢？<br>1）31是质数，相乘之后，相乘之后冲突小，同时质数又不能太大，不然会乘法溢出。<br>2）31可以由i*31== (i&lt;&lt;5)-1来表示，虚拟机支持这个优化。</p>]]></content>
     

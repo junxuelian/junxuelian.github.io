@@ -151,7 +151,90 @@
             <canvas data-colors="#eaeaea" data-sectionheight="100" data-contentid="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Mysql设计规范" class="article article-type-post article-index" itemscope itemprop="blogPost">
+            <article id="post-MySQL执行计划解读" class="article article-type-post article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/09/MySQL执行计划解读/">MySQL执行计划解读</a>
+    </h1>
+        
+        <a href="/2018/01/09/MySQL执行计划解读/" class="archive-article-date">
+  	<time datetime="2018-01-09T08:12:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-09</time>
+</a>
+        
+	 
+
+      </header>
+    
+
+    <!-- 目录内容 -->
+       
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="MySQL执行计划能告诉我们什么？"><a href="#MySQL执行计划能告诉我们什么？" class="headerlink" title="MySQL执行计划能告诉我们什么？"></a>MySQL执行计划能告诉我们什么？</h2><p>MySQL优化器是如何处理我们所提交的SQl请求的。SQL如何使用索引的。联接查询的执行顺序。查询扫描的数据行数。无法展示存储过程，触发器，UDF对查询的影响。</p>
+<h2 id="如何查看MySQL的执行计划"><a href="#如何查看MySQL的执行计划" class="headerlink" title="如何查看MySQL的执行计划"></a>如何查看MySQL的执行计划</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN</span><br><span class="line">SELECT c.`category_name`,a.`product_name`,b.`title`</span><br><span class="line">FROM product_info a</span><br><span class="line">JOIN product_comment b ON a.`product_id`=b.`product_id`</span><br><span class="line">JOIN product_category c ON c.`category_id`=a.`one_category_id`;</span><br></pre></td></tr></table></figure>
+<p>加上EXPLAIN关键字就可以了。接下来解释每一列所代表的含义。</p>
+        
+          <a class="article-more-a" href="/2018/01/09/MySQL执行计划解读/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">MySQL执行计划解读</a>
+        		</li>
+      		
+		</ul>
+	</div>
+      <div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MySQL//" class="article-tag-list-link color1">MySQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/09/MySQL执行计划解读/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+  
+    <article id="post-Mysql设计规范" class="article article-type-post article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -563,90 +646,9 @@
     </div>
 </aside>
   
-    <article id="post-如何从Java小白到收割大厂offer" class="article article-type-post article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/30/如何从Java小白到收割大厂offer/">如何从Java小白到收割大厂offer</a>
-    </h1>
-        
-        <a href="/2017/12/30/如何从Java小白到收割大厂offer/" class="archive-article-date">
-  	<time datetime="2017-12-30T08:05:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        
-	 
-
-      </header>
-    
-
-    <!-- 目录内容 -->
-       
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="收割大厂offer需要具备的条件"><a href="#收割大厂offer需要具备的条件" class="headerlink" title="收割大厂offer需要具备的条件"></a>收割大厂offer需要具备的条件</h1><p>本人也一直在关注互联网，觉得还是有些了解。互联网要求是越来越高了，竞争的人太多了，不过你不用担心，个人觉得，你到了中层的水平，拿二线offer应该问题，人多也有人多的好处，我比别人多努力一点，我就超过了很多人了，个人觉得需要具备以下条件，如图所示：<br><img src="/2017/12/30/如何从Java小白到收割大厂offer/大厂offer收割.png" alt="大厂要求"><br></p>
-        
-          <a class="article-more-a" href="/2017/12/30/如何从Java小白到收割大厂offer/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">offer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-      <div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/30/如何从Java小白到收割大厂offer/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
           </div>
         </div>
@@ -774,15 +776,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MySQL执行计划解读</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Mysql设计规范</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">offer</a>
+                <a href="javascript:void(0)" class="js-tag color2">MySQL执行计划解读</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -790,7 +792,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color1">offer</a>
               </li>
              
               <li class="article-tag-list-item">

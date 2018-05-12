@@ -174,18 +174,12 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="缓存策略及对应的使用场景"><a href="#缓存策略及对应的使用场景" class="headerlink" title="缓存策略及对应的使用场景"></a>缓存策略及对应的使用场景</h1><h2 id="FIFO-first-in-first-out"><a href="#FIFO-first-in-first-out" class="headerlink" title="FIFO(first in first out)"></a>FIFO(first in first out)</h2><p>先进先出策略，最先进入缓存的数据在缓存空间不够的情况下（超出最大元素的限制）会被优先清除掉。策略算法主要比较缓存元素的创建时间，在数据实效性要求场景下可选择该策略，优先保障最新数据的可用。</p>
+        <h2 id="FIFO-first-in-first-out"><a href="#FIFO-first-in-first-out" class="headerlink" title="FIFO(first in first out)"></a>FIFO(first in first out)</h2><p>先进先出策略，最先进入缓存的数据在缓存空间不够的情况下（超出最大元素的限制）会被优先清除掉。策略算法主要比较缓存元素的创建时间，在数据实效性要求场景下可选择该策略，优先保障最新数据的可用。</p>
 <h2 id="LFU-less-frequently-used"><a href="#LFU-less-frequently-used" class="headerlink" title="LFU(less frequently used)"></a>LFU(less frequently used)</h2><p>最少使用策略，无论是否过期，根据元素的被使用次数判断，清除使用次数较少的元素释放空间。策略算法主要比较元素的hitCount（命中次数）。在保证高频数据有效性场景下，可选择该策略。</p>
-<h2 id="LRU-least-recently-used"><a href="#LRU-least-recently-used" class="headerlink" title="LRU(least recently used)"></a>LRU(least recently used)</h2><p>最近最少使用策略，无论是否过期，根据元素最后一次被使用的时间戳，清除最远使用时间戳的元素释放空间。策略算法主要比较元素最近一次被get时间。在热点数据场景下比较适用，优先保证热点数据的有效性。</p>
-<h2 id="其他策略"><a href="#其他策略" class="headerlink" title="其他策略"></a>其他策略</h2><p>根据过期时间判断，清理过期时间最长的元素；<br>根据过期时间判断，清理最近要过期的元素；<br>随机清理；<br>根据关键字（或元素内容）长短清理等。</p>
-<h2 id="Redis缓存穿透，缓存击穿，缓存雪崩解决方案"><a href="#Redis缓存穿透，缓存击穿，缓存雪崩解决方案" class="headerlink" title="Redis缓存穿透，缓存击穿，缓存雪崩解决方案"></a>Redis缓存穿透，缓存击穿，缓存雪崩解决方案</h2><h3 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h3><p>缓存穿透是指查询一个一定不存在的数据，由于缓存是不命中时被动写的，并且出于容错考虑，如果从存储层查不到数据则不写入缓存，这将导致这个不存在的数据每次请求都要到存储层去查询，失去了缓存的意义。在流量大时，可能DB就挂掉了，要是有人利用不存在的key频繁攻击我们的应用，这就是漏洞。</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>有很多种方法可以有效地解决缓存穿透问题，最常见的则是采用布隆过滤器，将所有可能存在的数据哈希到一个足够大的bitmap中，一个一定不存在的数据会被 这个bitmap拦截掉，从而避免了对底层存储系统的查询压力。另外也有一个更为简单粗暴的方法（我们采用的就是这种），如果一个查询返回的数据为空（不管是数 据不存在，还是系统故障），我们仍然把这个空结果进行缓存，但它的过期时间会很短，最长不超过五分钟。</p>
-<h3 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h3><p>缓存雪崩是指在我们设置缓存时采用了相同的过期时间，导致缓存在某一时刻同时失效，请求全部转发到DB，DB瞬时压力过重雪崩。</p>
-<h3 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h3><p>缓存失效时的雪崩效应对底层系统的冲击非常可怕。大多数系统设计者考虑用加锁或者队列的方式保证缓存的单线 程（进程）写，从而避免失效时大量的并发请求落到底层存储系统上。这里分享一个简单方案就时讲缓存失效时间分散开，比如我们可以在原有的失效时间基础上增加一个随机值，比如1-5分钟随机，这样每一个缓存的过期时间的重复率就会降低，就很难引发集体失效的事件。</p>
-<h3 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h3><p>对于一些设置了过期时间的key，如果这些key可能会在某些时间点被超高并发地访问，是一种非常“热点”的数据。这个时候，需要考虑一个问题：缓存被“击穿”的问题，这个和缓存雪崩的区别在于这里针对某一key缓存，前者则是很多key。<br>缓存在某个时间点过期的时候，恰好在这个时间点对这个Key有大量的并发请求过来，这些请求发现缓存过期一般都会从后端DB加载数据并回设到缓存，这个时候大并发的请求可能会瞬间把后端DB压垮。</p>
-<h3 id="1-使用互斥锁-mutex-key"><a href="#1-使用互斥锁-mutex-key" class="headerlink" title="1.使用互斥锁(mutex key)"></a>1.使用互斥锁(mutex key)</h3><p>业界比较常用的做法，是使用mutex。简单地来说，就是在缓存失效的时候（判断拿出来的值为空），不是立即去load db，而是先使用缓存工具的某些带成功操作返回值的操作（比如Redis的SETNX或者Memcache的ADD）去set一个mutex key，当操作返回成功时，再进行load db的操作并回设缓存；否则，就重试整个get缓存的方法。</p>
-<h3 id="2-“提前”使用互斥锁-mutex-key-："><a href="#2-“提前”使用互斥锁-mutex-key-：" class="headerlink" title="2. “提前”使用互斥锁(mutex key)："></a>2. “提前”使用互斥锁(mutex key)：</h3><p>在value内部设置1个超时值(timeout1), timeout1比实际的memcache timeout(timeout2)小。当从cache读取到timeout1发现它已经过期时候，马上延长timeout1并重新设置到cache。然后再从数据库加载数据并设置到cache中。</p>
-<h3 id="3-“永远不过期”："><a href="#3-“永远不过期”：" class="headerlink" title="3. “永远不过期”："></a>3. “永远不过期”：</h3><p>这里的“永远不过期”包含两层意思：<br>(1) 从redis上看，确实没有设置过期时间，这就保证了，不会出现热点key过期问题，也就是“物理”不过期。<br>(2) 从功能上看，如果不过期，那不就成静态的了吗？所以我们把过期时间存在key对应的value里，如果发现要过期了，通过一个后台的异步线程进行缓存的构建，也就是“逻辑”过期</p>
+<h2 id="LRU-least-recently-used"><a href="#LRU-least-recently-used" class="headerlink" title="LRU(least recently used)"></a>LRU(least recently used)</h2><p>最近最少使用策略，无论是否过期，根据元素最后一次被使用的时间戳，清除最远使用时间戳的元素释放空间。策略算法主要比较元素最近一次被get时间。在热点数据场景下比较适用，优先保证热点数据的有效性。<br></p>
+        
+          <a class="article-more-a" href="/2018/05/12/缓存策略及对应的使用场景/#more">more >></a>
+        
       
 
       

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-07-03T07:59:50.694Z</updated>
+  <updated>2018-05-12T09:09:26.969Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,27 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Test</title>
-    <link href="http://yoursite.com/2018/07/03/Test/"/>
-    <id>http://yoursite.com/2018/07/03/Test/</id>
-    <published>2018-07-03T07:59:31.000Z</published>
-    <updated>2018-07-03T07:59:50.694Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;Test&quot;&gt;&lt;a href=&quot;#Test&quot; class=&quot;headerlink&quot; title=&quot;Test&quot;&gt;&lt;/a&gt;Test&lt;/h2&gt;
-      
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>缓存策略及对应的使用场景</title>

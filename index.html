@@ -145,67 +145,7 @@
             <canvas data-colors="#eaeaea" data-sectionheight="100" data-contentid="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Test" class="article article-type-post article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/03/Test/">Test</a>
-    </h1>
-        
-        <a href="/2018/07/03/Test/" class="archive-article-date">
-  	<time datetime="2018-07-03T07:59:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-03</time>
-</a>
-        
-	 
-
-      </header>
-    
-
-    <!-- 目录内容 -->
-       
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/03/Test/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-  
-    <article id="post-缓存策略及对应的使用场景" class="article article-type-post article-index" itemscope itemprop="blogPost">
+            <article id="post-缓存策略及对应的使用场景" class="article article-type-post article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -613,6 +553,93 @@
     </div>
 </aside>
   
+    <article id="post-Spring事务管理" class="article article-type-post article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/07/Spring事务管理/">Spring事务管理</a>
+    </h1>
+        
+        <a href="/2018/03/07/Spring事务管理/" class="archive-article-date">
+  	<time datetime="2018-03-07T02:47:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
+</a>
+        
+	 
+
+      </header>
+    
+
+    <!-- 目录内容 -->
+       
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是事务？"><a href="#什么是事务？" class="headerlink" title="什么是事务？"></a>什么是事务？</h2><p>事务指的是逻辑上的一组操作，这组操作要么全部成功，要么全部失败。</p>
+<h2 id="事务的特性（ACID）"><a href="#事务的特性（ACID）" class="headerlink" title="事务的特性（ACID）"></a>事务的特性（ACID）</h2><p>1、原子性<br>2、一致性<br>3、隔离性<br>4、持久性</p>
+<h2 id="原子性："><a href="#原子性：" class="headerlink" title="原子性："></a>原子性：</h2><p>原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。</p>
+<h2 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a>一致性</h2><p>一致性指事务前后数据的完整性必须保持一致。</p>
+<h2 id="隔离性"><a href="#隔离性" class="headerlink" title="隔离性"></a>隔离性</h2><p>隔离性指多个用户并发访问数据库时，一个用户的事务不能被其他用户的事务所干扰，多个并发事务之间数据要相互隔离。</p>
+<h2 id="持久性"><a href="#持久性" class="headerlink" title="持久性"></a>持久性</h2><p>持久性是指一个事务一旦提交，它对数据库中数据的改变就是永久性的，即便数据库发生故障也不应该对其有任何影响。</p>
+<h2 id="Spring事务管理"><a href="#Spring事务管理" class="headerlink" title="Spring事务管理"></a>Spring事务管理</h2><p>Spring事务管理高层抽象主要包括3个接口：<br>PlatformTransactionManager(事务管理器)<br>TransactionDefinition(事务定义信息，包含隔离级别、事务传播行为、超时、只读)<br>TransactionStatus(事务具体运行状态)<br></p>
+        
+          <a class="article-more-a" href="/2018/03/07/Spring事务管理/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring事务管理</a>
+        		</li>
+      		
+		</ul>
+	</div>
+      <div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Spring//" class="article-tag-list-link color2">Spring</a>
+        		</li>
+      		
+		</ul>
+	</div>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/07/Spring事务管理/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -743,19 +770,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MySQL执行计划解读</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Mysql设计规范</a>
+                <a href="javascript:void(0)" class="js-tag color2">MySQL执行计划解读</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spring事务管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Mysql设计规范</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -771,11 +798,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递归</a>
+                <a href="javascript:void(0)" class="js-tag color5">缓存策略</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">缓存策略</a>
+                <a href="javascript:void(0)" class="js-tag color3">递归</a>
               </li>
             
             <div class="clearfix"></div>

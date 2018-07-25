@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>String中hashcode实现 | 一名行进中的码农</title>
+  <title>深拷贝与浅拷贝 | 一名行进中的码农</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-  <meta name="description" content="String中hashcode源代码如下：123456789101112public int hashCode() &amp;#123;        int h = hash;        if (h == 0 &amp;amp;&amp;amp; value.length &amp;gt; 0) &amp;#123;            char val[] = value;            for (int i = 0;">
-<meta name="keywords" content="源码">
+  <meta name="description" content="Java中深拷贝与浅拷贝浅拷贝（浅复制、浅克隆）：被复制对象的所有变量都含有与原来的对象相同的值，而所有的对其他对象的引用仍然指向原来的对象。 深拷贝（深复制、深克隆）：被复制对象的所有变量都含有与原来的对象相同的值，除去那些引用其他对象的变量。那些引用其他对象的变量将指向被复制过的新对象，而不再是原有的那些被引用的对象。换言之，深拷贝把要复制的对象所引用的对象都复制了一遍。 1. 浅拷贝1234">
+<meta name="keywords" content="Java基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="String中hashcode实现">
-<meta property="og:url" content="http://yoursite.com/2018/03/29/String中hashcode实现/index.html">
+<meta property="og:title" content="深拷贝与浅拷贝">
+<meta property="og:url" content="http://yoursite.com/2018/07/25/深拷贝与浅拷贝/index.html">
 <meta property="og:site_name" content="一名行进中的码农">
-<meta property="og:description" content="String中hashcode源代码如下：123456789101112public int hashCode() &amp;#123;        int h = hash;        if (h == 0 &amp;amp;&amp;amp; value.length &amp;gt; 0) &amp;#123;            char val[] = value;            for (int i = 0;">
+<meta property="og:description" content="Java中深拷贝与浅拷贝浅拷贝（浅复制、浅克隆）：被复制对象的所有变量都含有与原来的对象相同的值，而所有的对其他对象的引用仍然指向原来的对象。 深拷贝（深复制、深克隆）：被复制对象的所有变量都含有与原来的对象相同的值，除去那些引用其他对象的变量。那些引用其他对象的变量将指向被复制过的新对象，而不再是原有的那些被引用的对象。换言之，深拷贝把要复制的对象所引用的对象都复制了一遍。 1. 浅拷贝1234">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-29T14:45:17.653Z">
+<meta property="og:updated_time" content="2018-07-25T06:02:47.437Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="String中hashcode实现">
-<meta name="twitter:description" content="String中hashcode源代码如下：123456789101112public int hashCode() &amp;#123;        int h = hash;        if (h == 0 &amp;amp;&amp;amp; value.length &amp;gt; 0) &amp;#123;            char val[] = value;            for (int i = 0;">
+<meta name="twitter:title" content="深拷贝与浅拷贝">
+<meta name="twitter:description" content="Java中深拷贝与浅拷贝浅拷贝（浅复制、浅克隆）：被复制对象的所有变量都含有与原来的对象相同的值，而所有的对其他对象的引用仍然指向原来的对象。 深拷贝（深复制、深克隆）：被复制对象的所有变量都含有与原来的对象相同的值，除去那些引用其他对象的变量。那些引用其他对象的变量将指向被复制过的新对象，而不再是原有的那些被引用的对象。换言之，深拷贝把要复制的对象所引用的对象都复制了一遍。 1. 浅拷贝1234">
   
     <link rel="alternative" href="/atom.xml" title="一名行进中的码农" type="application/atom+xml">
   
@@ -147,16 +147,16 @@
             <canvas data-colors="#eaeaea" data-sectionheight="100" data-contentid="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-String中hashcode实现" class="article article-type-post" itemscope itemprop="blogPost">
+            <article id="post-深拷贝与浅拷贝" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         <h1 class="article-title" itemprop="name">
-      String中hashcode实现
+      深拷贝与浅拷贝
     </h1>
         
-        <a href="/2018/03/29/String中hashcode实现/" class="archive-article-date">
-  	<time datetime="2018-03-29T14:02:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-29</time>
+        <a href="/2018/07/25/深拷贝与浅拷贝/" class="archive-article-date">
+  	<time datetime="2018-07-25T01:00:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-25</time>
 </a>
         
 	 
@@ -165,13 +165,45 @@
     
 
     <!-- 目录内容 -->
-       
+
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc()" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn()">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java中深拷贝与浅拷贝"><span class="toc-number">1.</span> <span class="toc-text">Java中深拷贝与浅拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-浅拷贝"><span class="toc-number">1.1.</span> <span class="toc-text">1. 浅拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-深拷贝"><span class="toc-number">1.2.</span> <span class="toc-text">2. 深拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-重载clone-方法"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 重载clone()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-利用序列化"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 利用序列化</span></a></li></ol></li></ol></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+             
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>String中hashcode源代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public int hashCode() &#123;</span><br><span class="line">        int h = hash;</span><br><span class="line">        if (h == 0 &amp;&amp; value.length &gt; 0) &#123;</span><br><span class="line">            char val[] = value;</span><br><span class="line"></span><br><span class="line">            for (int i = 0; i &lt; value.length; i++) &#123;</span><br><span class="line">                h = 31 * h + val[i];</span><br><span class="line">            &#125;</span><br><span class="line">            hash = h;</span><br><span class="line">        &#125;</span><br><span class="line">        return h;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>hashcode最终值是这么计算出来的：s[0]31^(n-1) + s[1]31^(n-2) + … + s[n-1]<br>你们会奇怪为何系数会是31呢？<br>1）31是质数，相乘之后，相乘之后冲突小，同时质数又不能太大，不然会乘法溢出。<br>2）31可以由i*31== (i&lt;&lt;5)-1来表示，虚拟机支持这个优化。</p>
+        <h1 id="Java中深拷贝与浅拷贝"><a href="#Java中深拷贝与浅拷贝" class="headerlink" title="Java中深拷贝与浅拷贝"></a>Java中深拷贝与浅拷贝</h1><p>浅拷贝（浅复制、浅克隆）：被复制对象的所有变量都含有与原来的对象相同的值，而所有的对其他对象的引用仍然指向原来的对象。</p>
+<p>深拷贝（深复制、深克隆）：被复制对象的所有变量都含有与原来的对象相同的值，除去那些引用其他对象的变量。<br>那些引用其他对象的变量将指向被复制过的新对象，而不再是原有的那些被引用的对象。<br>换言之，深拷贝把要复制的对象所引用的对象都复制了一遍。</p>
+<h2 id="1-浅拷贝"><a href="#1-浅拷贝" class="headerlink" title="1. 浅拷贝"></a>1. 浅拷贝</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">public class Student implements Cloneable &#123;</span><br><span class="line"></span><br><span class="line">    private String stuName;</span><br><span class="line"></span><br><span class="line">    private String stuNum;</span><br><span class="line"></span><br><span class="line">    private Book book;</span><br><span class="line"></span><br><span class="line">    public Student(String stuName, String stuNum, Book book) &#123;</span><br><span class="line">        this.stuName = stuName;</span><br><span class="line">        this.stuNum = stuNum;</span><br><span class="line">        this.book = book;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Object clone() &#123;</span><br><span class="line">        Student stu = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            stu = (Student) super.clone();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return stu;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Book getBook() &#123;</span><br><span class="line">        return book;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getStuNum() &#123;</span><br><span class="line">        return stuNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getStuName() &#123;</span><br><span class="line">        return stuName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setBook(Book book) &#123;</span><br><span class="line">        this.book = book;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setStuName(String stuName) &#123;</span><br><span class="line">        this.stuName = stuName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setStuNum(String stuNum) &#123;</span><br><span class="line">        this.stuNum = stuNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Book b = new Book(&quot;泡妹宝典&quot;, 100.50, &quot;XXX&quot;);</span><br><span class="line">        Student student1 = new Student(&quot;张三&quot;, &quot;201722221213&quot;, b);</span><br><span class="line">        Student student2 = (Student) student1.clone();</span><br><span class="line"></span><br><span class="line">        student2.setStuName(&quot;李四&quot;);</span><br><span class="line">        student2.setStuNum(&quot;201722221314&quot;);</span><br><span class="line">        student2.getBook().setBookName(&quot;Java内功心法&quot;);</span><br><span class="line"></span><br><span class="line">        System.out.print(&quot;name = &quot; + student1.getStuName() + &quot;  number = &quot;</span><br><span class="line">                + student1.getStuNum() + &quot;     book = &quot; + student1.getBook().getBookName());</span><br><span class="line">        System.out.println();</span><br><span class="line"></span><br><span class="line">        System.out.print(&quot;name = &quot; + student2.getStuName() + &quot;  number = &quot;</span><br><span class="line">                + student2.getStuNum() + &quot;     book = &quot; + student2.getBook().getBookName());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从结果中发现在改变 student2对象的 name 和 number 属性时 student1 的属性并不会跟随改变，当改变 book 对象的 name 属性时 student1 的 book 对象的属性也改变了，说明 book 是浅拷贝，student2 和 student1 的 book 是使用同一引用。这时我们就需要使用深拷贝了。</p>
+<h2 id="2-深拷贝"><a href="#2-深拷贝" class="headerlink" title="2. 深拷贝"></a>2. 深拷贝</h2><p>被复制对象的所有变量都含有与原来的对象相同的值，除去那些引用其他对象的变量。那些引用其他对象的变量将指向被复制过的新对象，而不再是原有的那些被引用的对象。换言之，深复制把要复制的对象所引用的对象都复制了一遍。</p>
+<h3 id="2-1-重载clone-方法"><a href="#2-1-重载clone-方法" class="headerlink" title="2.1 重载clone()方法"></a>2.1 重载clone()方法</h3><p>在Book中也实现了浅拷贝。然后在Sutdent中加入stu.book = (Book) this.book.clone();运行代码得到如下结果：<br>name = 张三  number = 201722221213     book = 泡妹宝典<br>name = 李四  number = 201722221314     book = Java内功心法</p>
+<p>上面是用 clone() 方法实现深拷贝，传统重载clone()方法，但当类中有很多引用时，比较麻烦。 </p>
+<h3 id="2-2-利用序列化"><a href="#2-2-利用序列化" class="headerlink" title="2.2 利用序列化"></a>2.2 利用序列化</h3><p>让Book和Student都实现Serializable接口。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">public class Student implements Cloneable, Serializable &#123;</span><br><span class="line"></span><br><span class="line">    private String stuName;</span><br><span class="line"></span><br><span class="line">    private String stuNum;</span><br><span class="line"></span><br><span class="line">    private Book book;</span><br><span class="line"></span><br><span class="line">    public Student(String stuName, String stuNum, Book book) &#123;</span><br><span class="line">        this.stuName = stuName;</span><br><span class="line">        this.stuNum = stuNum;</span><br><span class="line">        this.book = book;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Object deepClone() throws IOException, OptionalDataException, ClassNotFoundException &#123;</span><br><span class="line">        // 将对象写到流里</span><br><span class="line">        OutputStream bo = new ByteArrayOutputStream();</span><br><span class="line">        //OutputStream op = new ObjectOutputStream();</span><br><span class="line">        ObjectOutputStream oo = new ObjectOutputStream(bo);</span><br><span class="line">        oo.writeObject(this);</span><br><span class="line"></span><br><span class="line">        // 从流里读出来</span><br><span class="line">        InputStream bi = new ByteArrayInputStream(((ByteArrayOutputStream) bo).toByteArray());</span><br><span class="line">        ObjectInputStream oi = new ObjectInputStream(bi);</span><br><span class="line">        return (oi.readObject());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Book getBook() &#123;</span><br><span class="line">        return book;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getStuNum() &#123;</span><br><span class="line">        return stuNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getStuName() &#123;</span><br><span class="line">        return stuName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setBook(Book book) &#123;</span><br><span class="line">        this.book = book;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setStuName(String stuName) &#123;</span><br><span class="line">        this.stuName = stuName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setStuNum(String stuNum) &#123;</span><br><span class="line">        this.stuNum = stuNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws IOException, ClassNotFoundException &#123;</span><br><span class="line">        Book b = new Book(&quot;泡妹宝典&quot;, 100.50, &quot;XXX&quot;);</span><br><span class="line">        Student student1 = new Student(&quot;张三&quot;, &quot;201722221213&quot;, b);</span><br><span class="line">        Student student2 = (Student) student1.deepClone();</span><br><span class="line"></span><br><span class="line">        student2.setStuName(&quot;李四&quot;);</span><br><span class="line">        student2.setStuNum(&quot;201722221314&quot;);</span><br><span class="line">        student2.getBook().setBookName(&quot;Java内功心法&quot;);</span><br><span class="line"></span><br><span class="line">        System.out.print(&quot;name = &quot; + student1.getStuName() + &quot;  number = &quot;</span><br><span class="line">                + student1.getStuNum() + &quot;     book = &quot; + student1.getBook().getBookName());</span><br><span class="line">        System.out.println();</span><br><span class="line"></span><br><span class="line">        System.out.print(&quot;name = &quot; + student2.getStuName() + &quot;  number = &quot;</span><br><span class="line">                + student2.getStuNum() + &quot;     book = &quot; + student2.getBook().getBookName());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码运行结果：<br>name = 张三  number = 201722221213     book = 泡妹宝典<br>name = 李四  number = 201722221314     book = Java内功心法</p>
+<p>把对象写到流里的过程是序列化（Serilization）过程；而把对象从流中读出来的反序列化（Deserialization）过程。应当指出的是，写在流里的是对象的一个拷贝，而原对象仍然存在于JVM里面。<br>在Java语言里深拷贝一个对象，常常可以先使对象实现Serializable接口，然后把对象（实际上只是对象的一个拷贝）写到一个流里，再从流里读出来，便可以重建对象。</p>
       
 
       
@@ -214,7 +246,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
         		</li>
       		
 		</ul>
@@ -224,7 +256,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        			<a href="/categories/Java基础//" class="article-tag-list-link color2">Java基础</a>
         		</li>
       		
 		</ul>
@@ -276,7 +308,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/29/String中hashcode实现/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/25/深拷贝与浅拷贝/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -289,18 +321,9 @@
 
   <nav id="article-nav">
   
-    <a href="/2018/05/12/缓存策略及对应的使用场景/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          缓存策略及对应的使用场景
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/29/简单RPC框架实现/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">简单RPC框架实现</div>
+    <a href="/2018/05/12/缓存策略及对应的使用场景/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">缓存策略及对应的使用场景</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -318,6 +341,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java中深拷贝与浅拷贝"><span class="toc-number">1.</span> <span class="toc-text">Java中深拷贝与浅拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-浅拷贝"><span class="toc-number">1.1.</span> <span class="toc-text">1. 浅拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-深拷贝"><span class="toc-number">1.2.</span> <span class="toc-text">2. 深拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-重载clone-方法"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 重载clone()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-利用序列化"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 利用序列化</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
